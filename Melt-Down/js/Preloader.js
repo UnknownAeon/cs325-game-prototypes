@@ -10,8 +10,6 @@ GameStates.makePreloader = function( game ) {
     	//	These are the assets we loaded in Boot.js
       //	A nice sparkly background and a loading progress bar
       let background = game.add.sprite(0, 0, 'titleBackground');
-			background.width = 800;
-			background.height = 600;
       let preloadBarFrame = game.add.sprite(0, 0, 'loadingBarFrame');
 			preloadBarFrame.width = 800;
 			preloadBarFrame.height = 600;
@@ -26,20 +24,13 @@ GameStates.makePreloader = function( game ) {
 
       //	Here we load the rest of the assets our game needs.
       //	As this is just a Project Template I've not provided these assets, swap them for your own.
-      game.load.audio('titleMusic', 'assets/audio/cosmoscope.mp3');
-			game.load.image('background', 'assets/images/night_sky(edited).png');
+      game.load.audio('titleMusic', 'assets/audio/music/ice_cream_sandwich.mp3');
+			game.load.image('background', 'assets/images/background.png');
 			game.load.image('buttonFrame', 'assets/images/button_frame.png');
-			game.load.image('finished', 'assets/images/finished.png');
 			game.load.image('title', 'assets/images/title.png');
-			game.load.image('levelComplete', 'assets/images/levelComplete.png');
-			game.load.image('levelFailed', 'assets/images/levelFailed.png');
 			game.load.spritesheet('buttons', 'assets/images/buttons.png', 257, 48);
-			game.load.spritesheet('twinkleStar', 'assets/sprites/twinkle_star.png', 16, 16);
 			game.load.spritesheet('hourglass', 'assets/sprites/hourglass.png', 32, 32);
-			game.load.spritesheet('noStar', 'assets/sprites/noStar.png', 32, 32);
-			game.load.spritesheet('star', 'assets/sprites/star.png', 32, 32);
-
-			game.load.tilemap('level1', 'assets/levels/level1.json', null, Phaser.Tilemap.TILED_JSON);
+			game.load.atlas('penguins', 'assets/sprites/penguins.png', 'assets/sprites/penguins.json');
     },
 
     create: function () {
