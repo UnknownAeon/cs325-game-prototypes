@@ -29,7 +29,7 @@ GameStates.makeMainMenu = function( game, shared ) {
 
 			// Let's add some penguins to the title screen to give it some personality!
 			// The animated walking pengiun on the main menu.
-			this.p1 = game.add.sprite(200, 420, 'penguins');
+			this.p1 = game.add.sprite(210, 420, 'penguins');
 			this.p1.animations.add('walkLeft', ['sprite13', 'sprite17', 'sprite13', 'sprite18'], 4, true);
 			this.p1.animations.add('walkRight', ['sprite25', 'sprite29', 'sprite25', 'sprite30'], 4, true);
 			this.p1.animations.play('walkRight');
@@ -38,7 +38,7 @@ GameStates.makeMainMenu = function( game, shared ) {
 			this.p1LastMove = 'right';
 
 			// The animated sliding penguin on the main menu.
-			this.p2 = game.add.sprite(750, 30, 'penguins');
+			this.p2 = game.add.sprite(760, 30, 'penguins');
 			this.p2.animations.add('slideLeft', ['sprite64'], 1, false);
 			this.p2.animations.add('slideRight', ['sprite76'], 1, false);
 			this.p2.animations.play('slideLeft');
@@ -47,19 +47,19 @@ GameStates.makeMainMenu = function( game, shared ) {
 			this.p2LastMove = 'left';
 
 			// All the penguins that don't move.
-			let p3 = game.add.sprite(580, 440, 'penguins');
+			let p3 = game.add.sprite(590, 440, 'penguins');
 			p3.animations.add('stand', ['sprite27'], 1, false);
 			p3.animations.play('stand');
 
-			let p4 = game.add.sprite(615, 440, 'penguins');
+			let p4 = game.add.sprite(625, 440, 'penguins');
 			p4.animations.add('stand', ['sprite16'], 1, false);
 			p4.animations.play('stand');
 
-			let p5 = game.add.sprite(100, 520, 'penguins');
+			let p5 = game.add.sprite(110, 520, 'penguins');
 			p5.animations.add('stand', ['sprite3'], 1, false);
 			p5.animations.play('stand');
 
-			let p6 = game.add.sprite(725, 370, 'penguins');
+			let p6 = game.add.sprite(735, 370, 'penguins');
 			p6.animations.add('stand', ['sprite26'], 1, false);
 			p6.animations.play('stand');
 		},

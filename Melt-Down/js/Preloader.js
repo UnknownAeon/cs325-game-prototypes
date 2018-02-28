@@ -23,14 +23,26 @@ GameStates.makePreloader = function( game ) {
       game.load.setPreloadSprite(preloadBar);
 
       //	Here we load the rest of the assets our game needs.
-      //	As this is just a Project Template I've not provided these assets, swap them for your own.
+
+			// All of the mainmenu stuffs.
       game.load.audio('titleMusic', 'assets/audio/music/ice_cream_sandwich.mp3');
-			game.load.image('background', 'assets/images/background.png');
 			game.load.image('buttonFrame', 'assets/images/button_frame.png');
 			game.load.image('title', 'assets/images/title.png');
+
+			// All the ingame stuffs.
+			game.load.image('background', 'assets/images/background.png');
+			game.load.image('water', 'assets/sprites/water.png');
+			game.load.image('spawnTiles', 'assets/sprites/spawnTiles.png');
+			game.load.tilemap('level1', 'assets/levels/level1.json', null, Phaser.Tilemap.TILED_JSON);
+
+			// All the sprite stuffs.
 			game.load.spritesheet('buttons', 'assets/images/buttons.png', 257, 48);
 			game.load.spritesheet('hourglass', 'assets/sprites/hourglass.png', 32, 32);
+			game.load.spritesheet('iceBlock', 'assets/sprites/ice_block.png', 32, 32);
 			game.load.atlas('penguins', 'assets/sprites/penguins.png', 'assets/sprites/penguins.json');
+
+			// All the sound effects stuffs.
+			game.load.audio('jump', 'assets/audio/sounds/jump.wav');
     },
 
     create: function () {
