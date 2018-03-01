@@ -6,7 +6,7 @@ GameStates.makeGame = function(game, shared) {
   var blockTotal = 0; // Used to keep track of how many total blocks there are.
   var buttonClick = null;
   // ALTER THESE TWO VALUE TO CHANGE STARTING LEVEL AND TOTAL NUM OF LEVELS ----------------------
-  var currentLevel = 5; // Used to maintain which tile map we are on whenever we reset this state.
+  var currentLevel = 1; // Used to maintain which tile map we are on whenever we reset this state.
   var maxLevel = 5; // Used to keep track of whether or not this is the last level.
   // ---------------------------------------------------------------------------------------------
   var music = null;
