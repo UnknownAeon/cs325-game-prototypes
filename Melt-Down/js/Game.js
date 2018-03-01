@@ -4,13 +4,15 @@ GameStates.makeGame = function(game, shared) {
   // All the globals needed for all the different helper functions.
   var blockCount = 0; // Used to keep track of how many blocks have been broken.
   var blockTotal = 0; // Used to keep track of how many total blocks there are.
+  var buttonClick = null;
   // ALTER THESE TWO VALUE TO CHANGE STARTING LEVEL AND TOTAL NUM OF LEVELS ----------------------
-  var currentLevel = 1; // Used to maintain which tile map we are on whenever we reset this state.
-  var maxLevel = 2; // Used to keep track of whether or not this is the last level.
+  var currentLevel = 5; // Used to maintain which tile map we are on whenever we reset this state.
+  var maxLevel = 5; // Used to keep track of whether or not this is the last level.
   // ---------------------------------------------------------------------------------------------
   var music = null;
   var levelComplete = false;
   var jumpTimer = 0; // Used to make sure jumping can only occur when on ground.
+  var onBelly = false; // Maintains if the player should slide or not.
   var slide = 'none';
   var score = 0;
   var time = 0;
@@ -18,9 +20,25 @@ GameStates.makeGame = function(game, shared) {
   function quitGame() {
     //  Here you should destroy anything you no longer need.
     //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
-
+    music.stop();
+    // Have to reset all values incase the player decides to play again!
+    // These values are maintained when changing states for some reason!
+    blockCount = 0;
+    blockTotal = 0;
+    currentLevel = 1;
+    levelComplete = false;
+    jumpTimer = 0;
+    onBelly = false;
+    slide = 'none';
+    score = 0;
+    time = 0;
+    game.state.restart();
+    // Oddly enough, without this conditional, the reset will get skipped and playing again will restart
+    // level2 with the same score you had last time. The conditional ensures the reset happens before the
+    // state change.
+    let reset = true;
     //  Then let's go back to the main menu.
-    game.state.start('MainMenu');
+    if (reset) game.state.start('MainMenu');
   }
 
   // Prepares a block to be destroyed after the player walks over it.
@@ -69,6 +87,25 @@ GameStates.makeGame = function(game, shared) {
     this.bearKilled.play();
   }
 
+  // Called when player and item collide.
+  // Item is killed, sound is played, and the effect on the game is different per item.
+  function collectItem(player, item) {
+    if (item.name == 'greenFish') {
+      item.kill();
+      this.pickup.play();
+      score += 50;
+      this.scoreCounter.text = 'Score = ' + score;
+    }
+    else if (item.name == 'blueFish') {
+      item.kill();
+      this.powerup.play();
+      score += 100;
+      this.scoreCounter.text = 'Score = ' + score;
+      onBelly = true;
+      this.player.body.height = 16;
+    }
+  }
+
   // Ends the level, stops the timer, 'kills' the player.
   // Will display the end result info - win vs lose, restart vs continue.
   function endLevel(player, water) {
@@ -106,31 +143,10 @@ GameStates.makeGame = function(game, shared) {
       // Instead, show a victory dialogue and return them to the menu!
       // maxLevel is created at the top of the file. Update this number to be the number of the last level!!!
       if (currentLevel == maxLevel) {
-        var returnToMenu = function() {
-          music.stop();
-          // Have to reset all values incase the player decides to play again!
-          // These values are maintained when changing states for some reason!
-          blockCount = 0; // Used to keep track of how many blocks have been broken.
-          blockTotal = 0; // Used to keep track of how many total blocks there are.
-          currentLevel = 1; // Used to maintain which tile map we are on whenever we reset this state.
-          maxLevel = 2; // Used to keep track of whether or not this is the last level.
-          levelComplete = false;
-          jumpTimer = 0; // Used to make sure jumping can only occur when on ground.
-          slide = 'none';
-          score = 0;
-          time = 0;
-          game.state.restart();
-          // Oddly enough, without this conditional, the reset will get skipped and playing again will restart
-          // level2 with the same score you had last time. The conditional ensures the reset happens before the
-          // state change.
-          let reset = true;
-          if (reset) game.state.start('MainMenu');
-
-        }
         let victory = game.add.sprite(0, 0, 'victory');
         victory.fixedToCamera = true;
         let winTimer = game.time.create();
-        let goBack = winTimer.add(Phaser.Timer.SECOND * 5, returnToMenu, this);
+        let goBack = winTimer.add(Phaser.Timer.SECOND * 5, quitGame, this);
         winTimer.start();
       }
       else {
@@ -209,11 +225,13 @@ GameStates.makeGame = function(game, shared) {
 
   // Restarts the level for the player to go through again.
   function restartLevel() {
+		buttonClick.play();
     music.stop();
     // Reset all global variables.
     blockCount = 0;
     blockTotal = 0;
     levelComplete = false;
+    onBelly = false;
     score = 0;
     time = 0;
     game.time.reset();
@@ -222,11 +240,13 @@ GameStates.makeGame = function(game, shared) {
 
   // Moves the player to the next level in the game.
   function nextLevel() {
+		buttonClick.play();
     music.stop();
     // Reset all global variables.
     blockCount = 0;
     blockTotal = 0;
     levelComplete = false;
+    onBelly = false;
     score = 0;
     time = 0;
     // Sets us up to load the next level!
@@ -251,6 +271,8 @@ GameStates.makeGame = function(game, shared) {
 			music.loop = true;
 			music.volume = .3;
       music.play();
+      buttonClick = game.add.audio('menuSelect');
+      buttonClick.volume = .3;
       // Sound effects stuffs.
       this.jump = game.add.audio('jump');
       this.jump.volume = .3;
@@ -258,10 +280,14 @@ GameStates.makeGame = function(game, shared) {
       this.blockStep.volume = .3;
       this.bearKilled = game.add.audio('bearKilled');
       this.bearKilled.volume = .3;
+      this.pickup = game.add.audio('pickup');
+      this.pickup.volume = .3;
       this.playerWater = game.add.audio('playerWater');
       this.playerWater.volume = .3;
       this.playerKilled = game.add.audio('playerKilled');
       this.playerKilled.volume = .3;
+      this.powerup = game.add.audio('powerup');
+      this.powerup.volume = .3;
       // Background image
       let background = game.add.sprite(0, 0, 'background');
 
@@ -276,14 +302,17 @@ GameStates.makeGame = function(game, shared) {
       // Water layer that ends the level on collision with the player.
       this.waterLayer = this.map.createLayer('WaterLayer');
       this.map.setCollisionBetween(1, 100, true, this.waterLayer);
+
       // Patrol Markers for the enemy to know when to turn around.
       this.patrolMarkers = this.map.createLayer('PatrolMarkers');
       this.map.setCollisionBetween(1, 100, true, this.patrolMarkers);
       this.patrolMarkers.visible = false; // we don't want to see this layer though!
+
       // Marker for spots that will kill a bear.
       this.bearDeath = this.map.createLayer('BearDeath');
       this.map.setCollisionBetween(1, 100, true, this.bearDeath);
       this.bearDeath.visible = false; // we don't want to see this layer though!
+
       // Takes the ice block object layer and converts them all into sprites that can be interacted with.
       // This allows extra control beyond a tile, and allows us to add animations and destroy the tiles.
       this.iceBlocks = game.add.physicsGroup();
@@ -296,10 +325,17 @@ GameStates.makeGame = function(game, shared) {
         block.animations.add('break', [0, 1, 2, 3], 5, false);
         block.queued = false; // Extra variable used to maintain if the block is queued to break.
       });
+
+      // Sets up the item layer and makes them collectables.
+      this.blueFish = game.add.physicsGroup();
+      this.greenFish = game.add.physicsGroup();
+      this.map.createFromObjects('ItemLayer', 'blueFish', 'blueFish', 0, true, false, this.blueFish);
+      this.map.createFromObjects('ItemLayer', 'greenFish', 'greenFish', 0, true, false, this.greenFish);
+
       // Creates the player character sprite.
       this.playerGroup = game.add.physicsGroup();
       // We create the player sprite from an object tile from the tile map.
-      this.map.createFromObjects('PlayerSpawn', 'player', 'penguins', 'sprite1', true, false, this.playerGroup);
+      this.map.createFromObjects('PlayerSpawn', 'player', 'penguins', 'p1_idle', true, false, this.playerGroup);
       this.playerGroup.forEach(player => {
         // Since there is only the one player sprite, we can just direct assign it.
         // Placing it at the location of the object spawn tile.
@@ -313,9 +349,11 @@ GameStates.makeGame = function(game, shared) {
       this.player.body.gravity.x = 20;
       this.player.body.velocity.x = 0;
       // Sets up the player animations.
-      this.player.animations.add('idle', ['sprite1'], 0, true);
-      this.player.animations.add('walkLeft', ['sprite13', 'sprite17', 'sprite13', 'sprite18'], 4, true);
-      this.player.animations.add('walkRight', ['sprite25', 'sprite29', 'sprite25', 'sprite30'], 4, true);
+      this.player.animations.add('idle', ['p1_idle'], 0, true);
+      this.player.animations.add('walkLeft', ['p1_left1', 'p1_left2', 'p1_left3', 'p1_left2'], 4, true);
+      this.player.animations.add('walkRight', ['p1_right1', 'p1_right2', 'p1_right3', 'p1_right2'], 4, true);
+      this.player.animations.add('slideLeft', ['p1_slide_left'], 0, true);
+      this.player.animations.add('slideRight', ['p1_slide_right'], 0, true);
       this.player.animations.play('idle');
       game.camera.follow(this.player); // Enables camera to follow player
 
@@ -374,6 +412,8 @@ GameStates.makeGame = function(game, shared) {
 
       // If the player makes contact with the water layer then the level ends.
       game.physics.arcade.collide(this.player, this.waterLayer, endLevel, null, this);
+      game.physics.arcade.overlap(this.player, this.blueFish, collectItem, null, this);
+      game.physics.arcade.overlap(this.player, this.greenFish, collectItem, null, this);
 
       // Collision detection for all of the ice blocks.
       this.iceBlocks.forEach(block => {
@@ -408,17 +448,29 @@ GameStates.makeGame = function(game, shared) {
       }
       // If left is pressed, move left.
       else if(this.cursors.left.isDown) {
-        slide = 'left'
-        this.slideTimer.stop();
-        this.player.body.velocity.x = -100;
-        this.player.animations.play('walkLeft');
+        if (onBelly) {
+          this.player.body.velocity.x = -125;
+          this.player.animations.play('slideLeft');
+        }
+        else {
+          slide = 'left'
+          this.slideTimer.stop();
+          this.player.body.velocity.x = -100;
+          this.player.animations.play('walkLeft');
+        }
       }
       // If right is pressed, move right.
       else if(this.cursors.right.isDown) {
-        slide = 'right'
-        this.slideTimer.stop();
-        this.player.body.velocity.x = 100;
-        this.player.animations.play('walkRight');
+        if (onBelly) {
+          this.player.body.velocity.x = 125;
+          this.player.animations.play('slideRight');
+        }
+        else {
+          slide = 'right'
+          this.slideTimer.stop();
+          this.player.body.velocity.x = 100;
+          this.player.animations.play('walkRight');
+        }
       }
       // Otherwise the player is idle.
       else {
@@ -430,15 +482,17 @@ GameStates.makeGame = function(game, shared) {
           };
           // If the player has been moving then the player should slide on the ice!
           // Slides left or right depending on direction through use of a timer and a lower velocity.
-          if (slide == 'right') {
-            this.player.body.velocity.x = 75;
-            let slideRight = this.slideTimer.add(Phaser.Timer.SECOND * 2, stopSlide, this);
-            this.slideTimer.start();
-          }
-          else if (slide == 'left') {
-            this.player.body.velocity.x = -75;
-            let slideRight = this.slideTimer.add(Phaser.Timer.SECOND * 2, stopSlide, this);
-            this.slideTimer.start();
+          if (!onBelly) {
+            if (slide == 'right') {
+              this.player.body.velocity.x = 75;
+              let slideRight = this.slideTimer.add(Phaser.Timer.SECOND * 2, stopSlide, this);
+              this.slideTimer.start();
+            }
+            else if (slide == 'left') {
+              this.player.body.velocity.x = -75;
+              let slideRight = this.slideTimer.add(Phaser.Timer.SECOND * 2, stopSlide, this);
+              this.slideTimer.start();
+            }
           }
         }
       }

@@ -39,11 +39,16 @@ GameStates.makePreloader = function( game ) {
 			// All the levels.
 			game.load.tilemap('level1', 'assets/levels/level1.json', null, Phaser.Tilemap.TILED_JSON);
 			game.load.tilemap('level2', 'assets/levels/level2.json', null, Phaser.Tilemap.TILED_JSON);
+			game.load.tilemap('level3', 'assets/levels/level3.json', null, Phaser.Tilemap.TILED_JSON);
+			game.load.tilemap('level4', 'assets/levels/level4.json', null, Phaser.Tilemap.TILED_JSON);
+			game.load.tilemap('level5', 'assets/levels/level5.json', null, Phaser.Tilemap.TILED_JSON);
 
 			// All the sprite stuffs.
 			game.load.spritesheet('buttons', 'assets/images/buttons.png', 257, 48);
 			game.load.spritesheet('hourglass', 'assets/sprites/hourglass.png', 32, 32);
 			game.load.spritesheet('iceBlock', 'assets/sprites/ice_block.png', 32, 32);
+			game.load.spritesheet('blueFish', 'assets/sprites/fish_blue.png', 14, 21);
+			game.load.spritesheet('greenFish', 'assets/sprites/fish_green.png', 21, 9);
 			game.load.atlas('penguins', 'assets/sprites/penguins.png', 'assets/sprites/penguins.json');
 			game.load.atlas('bears', 'assets/sprites/polarbears.png', 'assets/sprites/bears.json');
 
@@ -62,6 +67,7 @@ GameStates.makePreloader = function( game ) {
 			game.load.audio('pickup', 'assets/audio/sounds/pickup.wav');
 			game.load.audio('playerKilled', 'assets/audio/sounds/player_killed.wav');
 			game.load.audio('playerWater', 'assets/audio/sounds/player_water.wav');
+			game.load.audio('powerup', 'assets/audio/sounds/powerup.wav');
     },
 
     create: function () {

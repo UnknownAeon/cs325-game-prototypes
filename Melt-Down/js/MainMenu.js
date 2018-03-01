@@ -33,8 +33,8 @@ GameStates.makeMainMenu = function( game, shared ) {
 			// Let's add some penguins to the title screen to give it some personality!
 			// The animated walking pengiun on the main menu.
 			this.p1 = game.add.sprite(210, 420, 'penguins');
-			this.p1.animations.add('walkLeft', ['sprite13', 'sprite17', 'sprite13', 'sprite18'], 4, true);
-			this.p1.animations.add('walkRight', ['sprite25', 'sprite29', 'sprite25', 'sprite30'], 4, true);
+			this.p1.animations.add('walkLeft', ['p1_left1', 'p1_left2', 'p1_left3', 'p1_left2'], 4, true);
+			this.p1.animations.add('walkRight', ['p1_right1', 'p1_right2', 'p1_right3', 'p1_right2'], 4, true);
 			this.p1.animations.play('walkRight');
 			this.p1MoveRight = game.add.tween(this.p1).to({x: '+150'}, 2500, Phaser.Easing.Linear.None, true);
 			this.p1MoveLeft = game.add.tween(this.p1).to({x: '-150'}, 2500, Phaser.Easing.Linear.None, false);
@@ -42,28 +42,25 @@ GameStates.makeMainMenu = function( game, shared ) {
 
 			// The animated sliding penguin on the main menu.
 			this.p2 = game.add.sprite(760, 30, 'penguins');
-			this.p2.animations.add('slideLeft', ['sprite64'], 1, false);
-			this.p2.animations.add('slideRight', ['sprite76'], 1, false);
+			this.p2.animations.add('slideLeft', ['p2_slide_left'], 1, false);
+			this.p2.animations.add('slideRight', ['p2_slide_right'], 1, false);
 			this.p2.animations.play('slideLeft');
 			this.p2MoveRight = game.add.tween(this.p2).to({x: '+525'}, 4000, Phaser.Easing.Linear.None, false);
 			this.p2MoveLeft = game.add.tween(this.p2).to({x: '-525'}, 4000, Phaser.Easing.Linear.None, true);
 			this.p2LastMove = 'left';
-
 			// All the penguins that don't move.
 			let p3 = game.add.sprite(590, 440, 'penguins');
-			p3.animations.add('stand', ['sprite27'], 1, false);
+			p3.animations.add('stand', ['p3_right2'], 1, false);
 			p3.animations.play('stand');
-
 			let p4 = game.add.sprite(625, 440, 'penguins');
-			p4.animations.add('stand', ['sprite16'], 1, false);
+			p4.animations.add('stand', ['p4_left2'], 1, false);
 			p4.animations.play('stand');
 
 			let p5 = game.add.sprite(110, 520, 'penguins');
-			p5.animations.add('stand', ['sprite3'], 1, false);
+			p5.animations.add('stand', ['p3_idle'], 1, false);
 			p5.animations.play('stand');
-
 			let p6 = game.add.sprite(735, 370, 'penguins');
-			p6.animations.add('stand', ['sprite26'], 1, false);
+			p6.animations.add('stand', ['p2_right2'], 1, false);
 			p6.animations.play('stand');
 		},
 
