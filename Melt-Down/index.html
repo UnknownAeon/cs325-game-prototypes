@@ -33,63 +33,77 @@ body
 
 <ul>
 <li><strong>Originality:</strong>
-
+My game is original in its use of platforming, breaking blocks, and an icy environment. The penguin slides around on the ice and it breaks under their feet forcing them to the water below. The goal is to stay up as long as possible before you inevitably fall in.
 </li>
 
 <li><strong>Technical Merit:</strong>
+My game borrowed a bit from my last platformer - if it isn't broken don't fix it right? However, instead of using tiles for the platforms in my game I had to use sprites, because tiles cannot be animated or deleted. It was impossible to get my primary mechanics to work using tiles.
+ Therefore, I had to find a way to use Tiled to create sprite platforms from an Object Layer. I managed to do this, and each ice tile is actually an individual sprite that is checking collision with the player and enemies. Collision was a bit harder to determine because it was not a tile.
 
+ There is also merit in the way that I load in levels. I managed to set it up so that it uses a single game state and works automatically. Simply set a variable with the max number of levels, and ensure that the preloader has loaded them all in, and the game will run through them all in order.
+ Lastly, I managed to implement patrolling enemies that am very happy with. They use individual tile layers to know the route that they can take, and where the will die after falling.
 </li>
 
 <li><strong>Prototype Postmortem:</strong>
-
+I learned a lot about how sprites interact with one another and how to best handle many collision between many sprites. I also learned how to create sprites that act as tiles, and how to create a simple 'ai' enemy that works pretty well.
+The hardest part about making this prototype was setting up the breaking sprite tiles. It took be quite a bit of time to actually determine how the collision should work, and how to create interatable tiles from sprites in an Object Layer. It also was a bit time consuming to figure out level loading, not difficult, just a lot of trial and error.
 </li>
 
 <li><strong>Prototype Assets:</strong>
-
+The borrowed all of the sound based assets and the penguin, bear, and fish assets. However, I loaded all of these sprites I borrowed in atlases because they were not properly formated in a way I could use, which was quite time consuming.
+<p>The music did not have a direct link, search the name on the website the link takes you to.</p>
+<ul>
+	<li><a href='https://freemusicarchive.org'>Podington Bear - Ice Climb (Unused in prototype, will use in iteration)</a></li>
+	<li><a href='https://freemusicarchive.org'>Podington Bear - Ice Cream Sandwich</a></li>
+	<li><a href='https://opengameart.org/content/512-sound-effects-8-bit-style'>512 Sound Effects (8-bit style)</a></li>
+	<li><a href='https://forums.rpgmakerweb.com/index.php?threads/whtdragons-animals-and-running-horses-now-with-more-dragons.53552/'>whtdragon's animal sprites</a></li>
+	<li>All other assets were made by me.</li>
+</ul>
 </li>
 
 <li><strong>Prototype Closest Other Game:</strong>
-
+The game that most closely resemebles mine would be the other game I made - The Mystic Gems. This is because I borrowed a bit of platformer code from that game, so Melt Down! controls a little similarly. However, I made a great number of changes to this new game to a point where I feel they are now very different.
+In terms of published games, I would say that I haven't played a game very similar to mine, however my game was inspired by the falling block trope in platformers, eg: Donut Blocks in Super Mario World.
 </li>
 
 <li><strong>High Concept:</strong>
-
+You play as a penguin who loves to break ice; break as much ice as you can before going for a swim.
 </li>
 
 <li><strong>Theme:</strong>
-
+I used the Ice theme drawn from the theme cards.
 </li>
 
 <li><strong>Mandated Variety:</strong>
-
+Input: Keyboard, Randomness: Deterministic, Play Styles: Competitor and Collector and Achiever and Joker, Genre: Platformer and Puzzle
 </li>
 
 <li><strong>Prototype Goal:</strong>
-
+My prototype is evaluating three things: being able to create tiles out of sprites and have collision and events occur from those collisions, creating a multi-leveled game, and to create simple enemies.
 </li>
 
 <li><strong>Player Experience Goals:</strong>
-
+I want my players to have a fun and relaxing puzzle experience. If they just play casually they will likely only get 1-2 stars. But if they decide they want all three they have to work a bit harder to break as many blocks as possible.
 </li>
 
 <li><strong>Gameplay:</strong>
-
+The player's goal is to break as many blocks as possible by walking on top of them. Doing this will initiate a breaking sequence and the block will break and be removed shortly after. This will award the player 10 points. The player should break as many blocks as possible before falling into the water at the end of the level. The play also has a timer at the top left of the screen, this shows how long they have been on the level for - the longer you are alive, the larger modifier you are given if you make it to the end. The player can move with the left and right arrow keys, and jump with the up arrow key. The penguin the player controls is on ice, so it slides after moving! Picking up a green fish will give the player points. Picking up a blue fish awards points and puts the penguin on its belly. The penguin is faster and doesn't slide around when on its belly. The penguin goes back to its feet if it dies or the level is completed. Touching a polar bear will kill you.
 </li>
 
 <li><strong>Strategies:</strong>
-
+Attempt to break blocks in a line across the level, the more you break the more points you get! Picking up a green fish isn't always worth it, some are guarded by bears! Picking up a blue fish can be tricky some times. You can make polar bears fall to kill them! This awards a lot of points. Careful though, some don't die immediatly after they fall!
 </li>
 
 <li><strong>Story/Setting/Premise:</strong>
-
+You are a penguin who just loves breaking ice, but that needs to go into the ocean to catch himself some lunch! On the way to the water take part in your favorite past-time and break as much ice as possible! Careful though, there are polar bears that regularly hunt in the area and you don't want to get caught! If you don't break enough ice before the end of each level, the penguin will be sad and you'll have to do it again! This game is abstract and does not really have a story beyond this.
 </li>
 
 <li><strong>Target Audience:</strong>
-
+Anyone who enjoys a puzzle game that is fun and challenging. Anyone who enjoys platformers. Fans of the arctic!
 </li>
 
 <li><strong>Play Time:</strong>
-
+The 5 levels will likely take around 10 minutes to complete?
 </li>
 
 </ul>
