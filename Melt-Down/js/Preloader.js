@@ -33,6 +33,8 @@ GameStates.makePreloader = function( game ) {
 			game.load.image('background', 'assets/images/background.png');
 			game.load.image('water', 'assets/sprites/water.png');
 			game.load.image('spawnTiles', 'assets/sprites/spawnTiles.png');
+			game.load.image('flipDirection', 'assets/sprites/flipDirection.png');
+			game.load.image('bear_death', 'assets/sprites/bear_death.png');
 
 			// All the levels.
 			game.load.tilemap('level1', 'assets/levels/level1.json', null, Phaser.Tilemap.TILED_JSON);
@@ -43,6 +45,7 @@ GameStates.makePreloader = function( game ) {
 			game.load.spritesheet('hourglass', 'assets/sprites/hourglass.png', 32, 32);
 			game.load.spritesheet('iceBlock', 'assets/sprites/ice_block.png', 32, 32);
 			game.load.atlas('penguins', 'assets/sprites/penguins.png', 'assets/sprites/penguins.json');
+			game.load.atlas('bears', 'assets/sprites/polarbears.png', 'assets/sprites/bears.json');
 
 			// All the level finished stuffs.
 			game.load.image('levelComplete', 'assets/images/levelComplete.png');
@@ -53,6 +56,7 @@ GameStates.makePreloader = function( game ) {
 
 			// All the sound effects stuffs.
 			game.load.audio('jump', 'assets/audio/sounds/jump.wav');
+			game.load.audio('bearKilled', 'assets/audio/sounds/bear_killed.wav');
 			game.load.audio('blockStep', 'assets/audio/sounds/block_step.wav');
 			game.load.audio('menuSelect', 'assets/audio/sounds/menu_select.wav');
 			game.load.audio('pickup', 'assets/audio/sounds/pickup.wav');

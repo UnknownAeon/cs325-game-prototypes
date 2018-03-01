@@ -4,8 +4,10 @@ GameStates.makeGame = function(game, shared) {
   // All the globals needed for all the different helper functions.
   var blockCount = 0; // Used to keep track of how many blocks have been broken.
   var blockTotal = 0; // Used to keep track of how many total blocks there are.
+  // ALTER THESE TWO VALUE TO CHANGE STARTING LEVEL AND TOTAL NUM OF LEVELS ----------------------
   var currentLevel = 1; // Used to maintain which tile map we are on whenever we reset this state.
   var maxLevel = 2; // Used to keep track of whether or not this is the last level.
+  // ---------------------------------------------------------------------------------------------
   var music = null;
   var levelComplete = false;
   var jumpTimer = 0; // Used to make sure jumping can only occur when on ground.
@@ -44,6 +46,27 @@ GameStates.makeGame = function(game, shared) {
       // Starts the breaking animation.
       block.animations.play('break');
     }
+  }
+
+  // If the bear hits one of the invisble markers, it turns around and moves the other way.
+  function reverseBear(bear, marker) {
+    if (bear.direction == 'left') {
+      bear.direction = 'right';
+      bear.animations.play('walkRight');
+      bear.body.velocity.x = 125;
+    }
+    else {
+      bear.direction = 'left';
+      bear.animations.play('walkLeft');
+      bear.body.velocity.x = -125;
+    }
+  }
+
+  // If the player breaks enough blocks under a bear to make it fall, it dies.
+  function killBear(bear, killer) {
+    score += 250;
+    bear.kill();
+    this.bearKilled.play();
   }
 
   // Ends the level, stops the timer, 'kills' the player.
@@ -177,6 +200,14 @@ GameStates.makeGame = function(game, shared) {
     }
   }
 
+  // If the player touches an enemy they immediatly lose the level.
+  function killPlayer() {
+    this.player.kill();
+    this.playerKilled.play();
+    displayScore(0, false); // Displays score screen with loss.
+  }
+
+  // Restarts the level for the player to go through again.
   function restartLevel() {
     music.stop();
     // Reset all global variables.
@@ -189,6 +220,7 @@ GameStates.makeGame = function(game, shared) {
     game.state.restart();
   }
 
+  // Moves the player to the next level in the game.
   function nextLevel() {
     music.stop();
     // Reset all global variables.
@@ -224,8 +256,12 @@ GameStates.makeGame = function(game, shared) {
       this.jump.volume = .3;
       this.blockStep = game.add.audio('blockStep');
       this.blockStep.volume = .3;
+      this.bearKilled = game.add.audio('bearKilled');
+      this.bearKilled.volume = .3;
       this.playerWater = game.add.audio('playerWater');
       this.playerWater.volume = .3;
+      this.playerKilled = game.add.audio('playerKilled');
+      this.playerKilled.volume = .3;
       // Background image
       let background = game.add.sprite(0, 0, 'background');
 
@@ -233,11 +269,21 @@ GameStates.makeGame = function(game, shared) {
       this.map = game.add.tilemap('level' + parseInt(currentLevel));
       this.map.addTilesetImage('water', 'water');
       this.map.addTilesetImage('spawnTiles', 'spawnTiles');
+      this.map.addTilesetImage('flipDirection', 'flipDirection');
+      this.map.addTilesetImage('bear_death', 'bear_death');
 
       // Sets up the different layers of the map for interaction.
-      // Water layer that ends the level on collision with the player -> NEED TO ADD.
+      // Water layer that ends the level on collision with the player.
       this.waterLayer = this.map.createLayer('WaterLayer');
       this.map.setCollisionBetween(1, 100, true, this.waterLayer);
+      // Patrol Markers for the enemy to know when to turn around.
+      this.patrolMarkers = this.map.createLayer('PatrolMarkers');
+      this.map.setCollisionBetween(1, 100, true, this.patrolMarkers);
+      this.patrolMarkers.visible = false; // we don't want to see this layer though!
+      // Marker for spots that will kill a bear.
+      this.bearDeath = this.map.createLayer('BearDeath');
+      this.map.setCollisionBetween(1, 100, true, this.bearDeath);
+      this.bearDeath.visible = false; // we don't want to see this layer though!
       // Takes the ice block object layer and converts them all into sprites that can be interacted with.
       // This allows extra control beyond a tile, and allows us to add animations and destroy the tiles.
       this.iceBlocks = game.add.physicsGroup();
@@ -272,6 +318,28 @@ GameStates.makeGame = function(game, shared) {
       this.player.animations.add('walkRight', ['sprite25', 'sprite29', 'sprite25', 'sprite30'], 4, true);
       this.player.animations.play('idle');
       game.camera.follow(this.player); // Enables camera to follow player
+
+      // Creates the enemy sprites.
+      this.enemyGroup = game.add.physicsGroup();
+      this.bearGroup = game.add.physicsGroup();
+      // We create the enemy sprites from an object tile from the tile map.
+      this.map.createFromObjects('EnemySpawn', 'bear', 'bears', 'polar_left1', true, false, this.enemyGroup);
+      this.enemyGroup.forEach(enemy => {
+        // Placing it at the location of the object spawn tile.
+        let newBear = game.add.sprite(enemy.x, enemy.y, 'bears');
+        game.physics.arcade.enable(newBear);
+        newBear.animations.add('walkLeft', ['polar_left1', 'polar_left2', 'polar_left3'], 4, true);
+        newBear.animations.add('walkRight', ['polar_right1', 'polar_right2', 'polar_right3'], 4, true);
+        newBear.animations.play('walkLeft');
+        newBear.body.collideWorldBounds = true;
+        newBear.body.gravity.y = 600;
+        newBear.body.gravity.x = 0;
+        newBear.body.velocity.x = -125;
+        newBear.direction = 'left'; // Extra variable added to keep track of bear heading.
+        this.bearGroup.add(newBear);
+        enemy.kill(); // remove the stretched out bear that was temporarily placed.
+      });
+      this.enemyGroup.destroy();
 
       this.slideTimer = game.time.create(); // Timer for the player sliding on blocks.
       this.cursors = game.input.keyboard.createCursorKeys(); // Sets up arrow key bindings.
@@ -310,6 +378,25 @@ GameStates.makeGame = function(game, shared) {
       // Collision detection for all of the ice blocks.
       this.iceBlocks.forEach(block => {
         game.physics.arcade.collide(this.player, block, destroyBlock, null, this);
+        this.bearGroup.forEach(bear => {
+          game.physics.arcade.collide(bear, block, null, null, this);
+          if (bear.body.touching.left == true) {
+            bear.direction = 'right';
+            bear.animations.play('walkRight');
+            bear.body.velocity.x = 125;
+          }
+          else if (bear.body.touching.right == true) {
+            bear.direction = 'left';
+            bear.animations.play('walkLeft');
+            bear.body.velocity.x = -125;
+          }
+        });
+      });
+      // Collision detection for all of the bears.
+      this.bearGroup.forEach(bear => {
+        game.physics.arcade.collide(this.player, bear, killPlayer, null, this);
+        game.physics.arcade.collide(bear, this.patrolMarkers, reverseBear, null, this);
+        game.physics.arcade.collide(bear, this.bearDeath, killBear, null, this);
       });
 
       // Checks for input from key bindings, moves player accordingly.
