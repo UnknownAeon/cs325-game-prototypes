@@ -2,10 +2,14 @@
 
 GameStates.makeGame = function(game, shared) {
   // All the globals needed for all the different helper functions.
+  var blockCount = 0; // Used to keep track of how many blocks have been broken.
+  var blockTotal = 0; // Used to keep track of how many total blocks there are.
   var music = null;
+  var levelComplete = false;
   var jumpTimer = 0; // Used to make sure jumping can only occur when on ground.
   var slide = 'none';
   var score = 0;
+  var time = 0;
 
   function quitGame() {
     //  Here you should destroy anything you no longer need.
@@ -20,7 +24,17 @@ GameStates.makeGame = function(game, shared) {
     // If the block isn't queued for destruction or the player didn't touch its top, then it doesn't break.
     // If both conditions are met, block is queued to break.
     if (block.queued == false && player.body.touching.down == true) {
+      blockCount++;
+      this.blockCounter.text = '= ' + blockCount;
+      this.blockStep.play();
       block.queued = true;
+      // Anon function for block removal.
+      // Destroys the block at the end of its timer and increments the player's score.
+      var removeBlock = function(block) {
+        block.kill();
+        score += 10;
+        this.scoreCounter.text = 'Score = ' + score;
+      }
       // Creates the timer.
       let breakTimer = game.time.create();
       let breakBlock = breakTimer.add(Phaser.Timer.SECOND, removeBlock, this, block);
@@ -29,10 +43,114 @@ GameStates.makeGame = function(game, shared) {
       block.animations.play('break');
     }
   }
-  // Destroys the block at the end of its timer and increments the player's score.
-  function removeBlock(block) {
-    block.kill();
-    score += 10;
+
+  // Ends the level, stops the timer, 'kills' the player.
+  // Will display the end result info - win vs lose, restart vs continue.
+  function endLevel(player, water) {
+    player.kill();
+    levelComplete = true;
+    score += time * 10;
+    this.HUD.destroy();
+    let rating = null;
+    let win = true;
+    // Deterines your rating based on your score.
+    if (blockCount >= blockTotal * (3 / 4)) rating = 3;
+    else if (blockCount >= blockTotal * (1 / 2)) rating = 2;
+    else if (blockCount >= blockTotal * (1 / 4)) rating = 1;
+    else {
+      rating = 0;
+      win = false;
+    }
+    // Displays score.
+    displayScore(rating, win);
+  }
+
+  // Displays the score in a nice graphic. Gives a button for retry or for moving on.
+  function displayScore(rating, win) {
+    let textStyle = {
+      font: "normal 38px Tahoma",
+      fill: '#ffffff',
+      align: 'center',
+      boundsAlignH: "center", // bounds center align horizontally
+      boundsAlignV: "middle" // bounds center align vertically
+    };
+
+    if (win) {
+      // Creates the group for the dialogue.
+      let winGroup = game.add.group();
+      winGroup.fixedToCamera = true;
+      // Populate the dialogue with all the elements.
+      let win = game.add.sprite(0, 0, 'levelComplete');
+      winGroup.add(win);
+      if (rating == 1) {
+        let star1 = game.add.sprite(game.world.centerX - 64, 200, 'star');
+        winGroup.add(star1);
+        let star2 = game.add.sprite(game.world.centerX - 16, 200, 'noStar');
+        winGroup.add(star2);
+        let star3 = game.add.sprite(game.world.centerX + 32, 200, 'noStar');
+        winGroup.add(star3);
+      }
+      else if (rating == 2) {
+        let star1 = game.add.sprite(game.world.centerX - 64, 200, 'star');
+        winGroup.add(star1);
+        let star2 = game.add.sprite(game.world.centerX - 16, 200, 'star');
+        winGroup.add(star2);
+        let star3 = game.add.sprite(game.world.centerX + 32, 200, 'noStar');
+        winGroup.add(star3);
+      }
+      if (rating == 3) {
+        let star1 = game.add.sprite(game.world.centerX - 64, 200, 'star');
+        winGroup.add(star1);
+        let star2 = game.add.sprite(game.world.centerX - 16, 200, 'star');
+        winGroup.add(star2);
+        let star3 = game.add.sprite(game.world.centerX + 32, 200, 'star');
+        winGroup.add(star3);
+      }
+      // Convoluted method of centering text.
+      let scoreCounter = game.add.text(90, 300, score, textStyle);
+      scoreCounter.x = game.world.centerX - (scoreCounter.width / 2);
+      winGroup.add(scoreCounter);
+      // The button for restarting. ADD A QUIT BUTTON? <------------------------------------------------------
+      let continueButtonFrame = game.add.sprite(game.world.centerX - 132, 435, 'buttonFrame');
+      winGroup.add(continueButtonFrame);
+      let continueButton = game.add.button(game.world.centerX - 128, 438, 'buttons', null, null, 5, 1, 3);
+      winGroup.add(continueButton);
+    }
+    else {
+      // Creates the group for the dialogue.
+      let failGroup = game.add.group();
+      failGroup.fixedToCamera = true;
+      // Populate the dialogue with all the elements.
+      let failed = game.add.sprite(0, 0, 'levelFailed');
+      failGroup.add(failed);
+      let star1 = game.add.sprite(game.world.centerX - 64, 200, 'noStar');
+      failGroup.add(star1);
+      let star2 = game.add.sprite(game.world.centerX - 16, 200, 'noStar');
+      failGroup.add(star2);
+      let star3 = game.add.sprite(game.world.centerX + 32, 200, 'noStar');
+      failGroup.add(star3);
+      // Convoluted method of centering text.
+      let scoreCounter = game.add.text(90, 300, score, textStyle);
+      scoreCounter.x = game.world.centerX - (scoreCounter.width / 2);
+      failGroup.add(scoreCounter);
+      // The button for restarting. ADD A QUIT BUTTON? <------------------------------------------------------
+      let retryButtonFrame = game.add.sprite(game.world.centerX - 132, 435, 'buttonFrame');
+      failGroup.add(retryButtonFrame);
+      let retryButton = game.add.button(game.world.centerX - 128, 438, 'buttons', retry, null, 10, 6, 8);
+      failGroup.add(retryButton);
+    }
+  }
+
+  function retry() {
+    music.stop();
+    // Reset all global variables.
+    blockCount = 0;
+    blockTotal = 0;
+    levelComplete = false;
+    score = 0;
+    time = 0;
+    game.time.reset();
+    game.state.restart();
   }
 
   return {
@@ -52,6 +170,10 @@ GameStates.makeGame = function(game, shared) {
       // Sound effects stuffs.
       this.jump = game.add.audio('jump');
       this.jump.volume = .3;
+      this.blockStep = game.add.audio('blockStep');
+      this.blockStep.volume = .3;
+      this.playerWater = game.add.audio('playerWater');
+      this.playerWater.volume = .3;
       // Background image
       let background = game.add.sprite(0, 0, 'background');
 
@@ -69,6 +191,7 @@ GameStates.makeGame = function(game, shared) {
       this.iceBlocks = game.add.physicsGroup();
       this.map.createFromObjects('IceLayer', 'ice', 'iceBlock', 0, true, false, this.iceBlocks);
       this.iceBlocks.forEach(block => {
+        blockTotal++;
         game.physics.enable(block, Phaser.Physics.ARCADE);
         block.body.immovable = true;
         block.body.allowGravity = false;
@@ -99,12 +222,38 @@ GameStates.makeGame = function(game, shared) {
       game.camera.follow(this.player); // Enables camera to follow player
 
       this.slideTimer = game.time.create(); // Timer for the player sliding on blocks.
-
       this.cursors = game.input.keyboard.createCursorKeys(); // Sets up arrow key bindings.
+
+      // Sets up the HUD.
+      this.HUD = game.add.group();
+      this.HUD.fixedToCamera = true;
+      // Score
+      this.scoreCounter = game.add.text(0, 0, 'Score = ' + score, {fill:'black', fontSize:'20px'});
+      this.HUD.add(this.scoreCounter);
+      // Blocks
+      this.blockCounterImage = game.add.sprite(0, 32, 'iceBlock', 3);
+      this.HUD.add(this.blockCounterImage);
+      this.blockCounter = game.add.text(35, 37, '= ' + blockCount, {fill:'black', fontSize:'20px'});
+      this.HUD.add(this.blockCounter);
+      // Timer
+      this.timerImage = game.add.sprite(0, 70, 'hourglass', 0);
+      this.HUD.add(this.timerImage);
+      this.timeCounter = game.add.text(35, 75, '= ' + time, {fill:'black', fontSize:'20px'});
+      this.HUD.add(this.timeCounter);
+
+      game.time.reset();
     },
 
     update: function () {
-      game.physics.arcade.overlap(this.player, this.waterLayer); // Will be end level function associated.
+      // Maintains the running timer for survival, timer starts a couple seconds before player gets control,
+      // so we remove two seconds to start out to adjust.
+      if (!levelComplete) {
+        time = (Math.floor(game.time.totalElapsedSeconds()));
+        this.timeCounter.text = '= ' + time;
+      }
+
+      // If the player makes contact with the water layer then the level ends.
+      game.physics.arcade.collide(this.player, this.waterLayer, endLevel, null, this);
 
       // Collision detection for all of the ice blocks.
       this.iceBlocks.forEach(block => {
@@ -124,7 +273,6 @@ GameStates.makeGame = function(game, shared) {
         this.slideTimer.stop();
         this.player.body.velocity.x = -100;
         this.player.animations.play('walkLeft');
-        // this.footstep.play();
       }
       // If right is pressed, move right.
       else if(this.cursors.right.isDown) {

@@ -41,8 +41,19 @@ GameStates.makePreloader = function( game ) {
 			game.load.spritesheet('iceBlock', 'assets/sprites/ice_block.png', 32, 32);
 			game.load.atlas('penguins', 'assets/sprites/penguins.png', 'assets/sprites/penguins.json');
 
+			// All the level finished stuffs.
+			game.load.image('levelComplete', 'assets/images/levelComplete.png');
+			game.load.image('levelFailed', 'assets/images/levelFailed.png');
+			game.load.spritesheet('noStar', 'assets/sprites/noStar.png', 32, 32);
+			game.load.spritesheet('star', 'assets/sprites/star.png', 32, 32);
+
 			// All the sound effects stuffs.
 			game.load.audio('jump', 'assets/audio/sounds/jump.wav');
+			game.load.audio('blockStep', 'assets/audio/sounds/block_step.wav');
+			game.load.audio('menuSelect', 'assets/audio/sounds/menu_select.wav');
+			game.load.audio('pickup', 'assets/audio/sounds/pickup.wav');
+			game.load.audio('playerKilled', 'assets/audio/sounds/player_killed.wav');
+			game.load.audio('playerWater', 'assets/audio/sounds/playerWater.wav');
     },
 
     create: function () {

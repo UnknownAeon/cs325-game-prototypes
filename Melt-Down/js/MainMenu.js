@@ -6,6 +6,9 @@ GameStates.makeMainMenu = function( game, shared ) {
 	var playButton = null;
 
   function startGame(pointer) {
+		let buttonClick = game.add.audio('menuSelect');
+		buttonClick.volume = .3;
+		buttonClick.play();
   	//	Ok, the Play Button has been clicked or touched, so let's stop the music (otherwise it'll carry on playing)
     music.stop();
     //	And start the actual game
