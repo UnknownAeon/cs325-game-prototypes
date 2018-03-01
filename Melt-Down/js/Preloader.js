@@ -33,7 +33,10 @@ GameStates.makePreloader = function( game ) {
 			game.load.image('background', 'assets/images/background.png');
 			game.load.image('water', 'assets/sprites/water.png');
 			game.load.image('spawnTiles', 'assets/sprites/spawnTiles.png');
+
+			// All the levels.
 			game.load.tilemap('level1', 'assets/levels/level1.json', null, Phaser.Tilemap.TILED_JSON);
+			game.load.tilemap('level2', 'assets/levels/level2.json', null, Phaser.Tilemap.TILED_JSON);
 
 			// All the sprite stuffs.
 			game.load.spritesheet('buttons', 'assets/images/buttons.png', 257, 48);
@@ -44,6 +47,7 @@ GameStates.makePreloader = function( game ) {
 			// All the level finished stuffs.
 			game.load.image('levelComplete', 'assets/images/levelComplete.png');
 			game.load.image('levelFailed', 'assets/images/levelFailed.png');
+			game.load.image('victory', 'assets/images/victory.png');
 			game.load.spritesheet('noStar', 'assets/sprites/noStar.png', 32, 32);
 			game.load.spritesheet('star', 'assets/sprites/star.png', 32, 32);
 
@@ -53,7 +57,7 @@ GameStates.makePreloader = function( game ) {
 			game.load.audio('menuSelect', 'assets/audio/sounds/menu_select.wav');
 			game.load.audio('pickup', 'assets/audio/sounds/pickup.wav');
 			game.load.audio('playerKilled', 'assets/audio/sounds/player_killed.wav');
-			game.load.audio('playerWater', 'assets/audio/sounds/playerWater.wav');
+			game.load.audio('playerWater', 'assets/audio/sounds/player_water.wav');
     },
 
     create: function () {

@@ -4,6 +4,8 @@ GameStates.makeGame = function(game, shared) {
   // All the globals needed for all the different helper functions.
   var blockCount = 0; // Used to keep track of how many blocks have been broken.
   var blockTotal = 0; // Used to keep track of how many total blocks there are.
+  var currentLevel = 1; // Used to maintain which tile map we are on whenever we reset this state.
+  var maxLevel = 2; // Used to keep track of whether or not this is the last level.
   var music = null;
   var levelComplete = false;
   var jumpTimer = 0; // Used to make sure jumping can only occur when on ground.
@@ -47,6 +49,7 @@ GameStates.makeGame = function(game, shared) {
   // Ends the level, stops the timer, 'kills' the player.
   // Will display the end result info - win vs lose, restart vs continue.
   function endLevel(player, water) {
+    this.playerWater.play();
     player.kill();
     levelComplete = true;
     score += time * 10;
@@ -76,45 +79,78 @@ GameStates.makeGame = function(game, shared) {
     };
 
     if (win) {
-      // Creates the group for the dialogue.
-      let winGroup = game.add.group();
-      winGroup.fixedToCamera = true;
-      // Populate the dialogue with all the elements.
-      let win = game.add.sprite(0, 0, 'levelComplete');
-      winGroup.add(win);
-      if (rating == 1) {
-        let star1 = game.add.sprite(game.world.centerX - 64, 200, 'star');
-        winGroup.add(star1);
-        let star2 = game.add.sprite(game.world.centerX - 16, 200, 'noStar');
-        winGroup.add(star2);
-        let star3 = game.add.sprite(game.world.centerX + 32, 200, 'noStar');
-        winGroup.add(star3);
+      // If the player just completed the last level, do not prompt to continue.
+      // Instead, show a victory dialogue and return them to the menu!
+      // maxLevel is created at the top of the file. Update this number to be the number of the last level!!!
+      if (currentLevel == maxLevel) {
+        var returnToMenu = function() {
+          music.stop();
+          // Have to reset all values incase the player decides to play again!
+          // These values are maintained when changing states for some reason!
+          blockCount = 0; // Used to keep track of how many blocks have been broken.
+          blockTotal = 0; // Used to keep track of how many total blocks there are.
+          currentLevel = 1; // Used to maintain which tile map we are on whenever we reset this state.
+          maxLevel = 2; // Used to keep track of whether or not this is the last level.
+          levelComplete = false;
+          jumpTimer = 0; // Used to make sure jumping can only occur when on ground.
+          slide = 'none';
+          score = 0;
+          time = 0;
+          game.state.restart();
+          // Oddly enough, without this conditional, the reset will get skipped and playing again will restart
+          // level2 with the same score you had last time. The conditional ensures the reset happens before the
+          // state change.
+          let reset = true;
+          if (reset) game.state.start('MainMenu');
+
+        }
+        let victory = game.add.sprite(0, 0, 'victory');
+        victory.fixedToCamera = true;
+        let winTimer = game.time.create();
+        let goBack = winTimer.add(Phaser.Timer.SECOND * 5, returnToMenu, this);
+        winTimer.start();
       }
-      else if (rating == 2) {
-        let star1 = game.add.sprite(game.world.centerX - 64, 200, 'star');
-        winGroup.add(star1);
-        let star2 = game.add.sprite(game.world.centerX - 16, 200, 'star');
-        winGroup.add(star2);
-        let star3 = game.add.sprite(game.world.centerX + 32, 200, 'noStar');
-        winGroup.add(star3);
+      else {
+        // Creates the group for the dialogue.
+        let winGroup = game.add.group();
+        winGroup.fixedToCamera = true;
+        // Populate the dialogue with all the elements.
+        let win = game.add.sprite(0, 0, 'levelComplete');
+        winGroup.add(win);
+        if (rating == 1) {
+          let star1 = game.add.sprite(game.world.centerX - 64, 200, 'star');
+          winGroup.add(star1);
+          let star2 = game.add.sprite(game.world.centerX - 16, 200, 'noStar');
+          winGroup.add(star2);
+          let star3 = game.add.sprite(game.world.centerX + 32, 200, 'noStar');
+          winGroup.add(star3);
+        }
+        else if (rating == 2) {
+          let star1 = game.add.sprite(game.world.centerX - 64, 200, 'star');
+          winGroup.add(star1);
+          let star2 = game.add.sprite(game.world.centerX - 16, 200, 'star');
+          winGroup.add(star2);
+          let star3 = game.add.sprite(game.world.centerX + 32, 200, 'noStar');
+          winGroup.add(star3);
+        }
+        if (rating == 3) {
+          let star1 = game.add.sprite(game.world.centerX - 64, 200, 'star');
+          winGroup.add(star1);
+          let star2 = game.add.sprite(game.world.centerX - 16, 200, 'star');
+          winGroup.add(star2);
+          let star3 = game.add.sprite(game.world.centerX + 32, 200, 'star');
+          winGroup.add(star3);
+        }
+        // Convoluted method of centering text.
+        let scoreCounter = game.add.text(90, 300, score, textStyle);
+        scoreCounter.x = game.world.centerX - (scoreCounter.width / 2);
+        winGroup.add(scoreCounter);
+        // The button for restarting. ADD A QUIT BUTTON? <------------------------------------------------------
+        let continueButtonFrame = game.add.sprite(game.world.centerX - 132, 435, 'buttonFrame');
+        winGroup.add(continueButtonFrame);
+        let continueButton = game.add.button(game.world.centerX - 128, 438, 'buttons', nextLevel, null, 5, 1, 3);
+        winGroup.add(continueButton);
       }
-      if (rating == 3) {
-        let star1 = game.add.sprite(game.world.centerX - 64, 200, 'star');
-        winGroup.add(star1);
-        let star2 = game.add.sprite(game.world.centerX - 16, 200, 'star');
-        winGroup.add(star2);
-        let star3 = game.add.sprite(game.world.centerX + 32, 200, 'star');
-        winGroup.add(star3);
-      }
-      // Convoluted method of centering text.
-      let scoreCounter = game.add.text(90, 300, score, textStyle);
-      scoreCounter.x = game.world.centerX - (scoreCounter.width / 2);
-      winGroup.add(scoreCounter);
-      // The button for restarting. ADD A QUIT BUTTON? <------------------------------------------------------
-      let continueButtonFrame = game.add.sprite(game.world.centerX - 132, 435, 'buttonFrame');
-      winGroup.add(continueButtonFrame);
-      let continueButton = game.add.button(game.world.centerX - 128, 438, 'buttons', null, null, 5, 1, 3);
-      winGroup.add(continueButton);
     }
     else {
       // Creates the group for the dialogue.
@@ -136,12 +172,12 @@ GameStates.makeGame = function(game, shared) {
       // The button for restarting. ADD A QUIT BUTTON? <------------------------------------------------------
       let retryButtonFrame = game.add.sprite(game.world.centerX - 132, 435, 'buttonFrame');
       failGroup.add(retryButtonFrame);
-      let retryButton = game.add.button(game.world.centerX - 128, 438, 'buttons', retry, null, 10, 6, 8);
+      let retryButton = game.add.button(game.world.centerX - 128, 438, 'buttons', restartLevel, null, 10, 6, 8);
       failGroup.add(retryButton);
     }
   }
 
-  function retry() {
+  function restartLevel() {
     music.stop();
     // Reset all global variables.
     blockCount = 0;
@@ -150,6 +186,22 @@ GameStates.makeGame = function(game, shared) {
     score = 0;
     time = 0;
     game.time.reset();
+    game.state.restart();
+  }
+
+  function nextLevel() {
+    music.stop();
+    // Reset all global variables.
+    blockCount = 0;
+    blockTotal = 0;
+    levelComplete = false;
+    score = 0;
+    time = 0;
+    // Sets us up to load the next level!
+    currentLevel++;
+    // Resets the game clock.
+    game.time.reset();
+    // Start the next level.
     game.state.restart();
   }
 
@@ -178,7 +230,7 @@ GameStates.makeGame = function(game, shared) {
       let background = game.add.sprite(0, 0, 'background');
 
       // Add the tilemap to the game.
-      this.map = game.add.tilemap('level1');
+      this.map = game.add.tilemap('level' + parseInt(currentLevel));
       this.map.addTilesetImage('water', 'water');
       this.map.addTilesetImage('spawnTiles', 'spawnTiles');
 
@@ -241,7 +293,7 @@ GameStates.makeGame = function(game, shared) {
       this.timeCounter = game.add.text(35, 75, '= ' + time, {fill:'black', fontSize:'20px'});
       this.HUD.add(this.timeCounter);
 
-      game.time.reset();
+      game.time.reset(); // Resets the game clock since it was ticking during this create phase!
     },
 
     update: function () {
