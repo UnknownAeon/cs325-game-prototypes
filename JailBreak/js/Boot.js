@@ -26,7 +26,8 @@ GameStates.makeBoot = function( game ) {
 
     preload: function () {
       //  Here we load the assets required for our Preloader state (in this case a background and a loading bar)
-      game.load.image('titleBackground', 'assets/images/loading_background.png');
+      game.load.image('titleBackground', 'assets/images/loading_background.jpg');
+      game.load.image('loadingBarFrame', 'assets/images/loading_bar_frame.png');
       game.load.image('preloaderBar', 'assets/images/loading_bar.png');
     },
 
