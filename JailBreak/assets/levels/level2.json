@@ -12,7 +12,7 @@
          "width":30,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "data":"AQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAAAAAABAAAAAQAAAAAAAAABAAAAAQAAAAAAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAAAAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAAAAAAEAAAABAAAAAAAAAAEAAAABAAAAAAAAAAEAAAABAAAAAQAAAAAAAAABAAAAAQAAAAAAAAABAAAAAQAAAAAAAAABAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAABAAAAAAAAAAEAAAABAAAAAAAAAAEAAAABAAAAAAAAAAEAAAABAAAAAQAAAAMAAAABAAAAAQAAAAAAAAABAAAAAQAAAAMAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAEAAAABAAAAAwAAAAEAAAABAAAAAAAAAAEAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAAAAAAAAQAAAAEAAAAAAAAAAQAAAAEAAAAAAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAAAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAADAAAAAQAAAAEAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAQAAAAEAAAAAAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAAAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAAAAAAAAQAAAAEAAAABAAAABAAAAAEAAAABAAAAAQAAAAAAAAABAAAAAQAAAAEAAAAAAAAAAQAAAAEAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAEAAAADAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAwAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAAAAAABAAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAAEAAAAAQAAAAEAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAA",
          "encoding":"base64",
@@ -24,7 +24,7 @@
          "width":30,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "draworder":"topdown",
          "name":"KeyLayer",
@@ -40,7 +40,7 @@
                  "width":16,
                  "x":167.25,
                  "y":726.5
-                }, 
+                },
                 {
                  "gid":14,
                  "height":16,
@@ -52,7 +52,7 @@
                  "width":16,
                  "x":231.25,
                  "y":728.5
-                }, 
+                },
                 {
                  "gid":14,
                  "height":16,
@@ -64,7 +64,7 @@
                  "width":16,
                  "x":840.666666666667,
                  "y":248.333333333333
-                }, 
+                },
                 {
                  "gid":14,
                  "height":16,
@@ -76,7 +76,7 @@
                  "width":16,
                  "x":840,
                  "y":440
-                }, 
+                },
                 {
                  "gid":14,
                  "height":16,
@@ -88,7 +88,7 @@
                  "width":16,
                  "x":41.5,
                  "y":618
-                }, 
+                },
                 {
                  "gid":14,
                  "height":16,
@@ -100,7 +100,7 @@
                  "width":16,
                  "x":199,
                  "y":503
-                }, 
+                },
                 {
                  "gid":14,
                  "height":16,
@@ -112,7 +112,7 @@
                  "width":16,
                  "x":72,
                  "y":278
-                }, 
+                },
                 {
                  "gid":14,
                  "height":16,
@@ -124,7 +124,7 @@
                  "width":16,
                  "x":135.333333333333,
                  "y":55.3333333333333
-                }, 
+                },
                 {
                  "gid":14,
                  "height":16,
@@ -136,7 +136,7 @@
                  "width":16,
                  "x":680.666666666667,
                  "y":55.3333333333333
-                }, 
+                },
                 {
                  "gid":14,
                  "height":16,
@@ -154,7 +154,7 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "draworder":"topdown",
          "name":"ItemLayer",
@@ -170,7 +170,7 @@
                  "width":16,
                  "x":296.25,
                  "y":727.75
-                }, 
+                },
                 {
                  "gid":18,
                  "height":16,
@@ -188,7 +188,7 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "draworder":"topdown",
          "name":"BluePortals",
@@ -204,7 +204,7 @@
                  "width":32,
                  "x":64,
                  "y":736
-                }, 
+                },
                 {
                  "gid":23,
                  "height":32,
@@ -222,7 +222,7 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "draworder":"topdown",
          "name":"RedPortals",
@@ -238,7 +238,7 @@
                  "width":32,
                  "x":832,
                  "y":320
-                }, 
+                },
                 {
                  "gid":25,
                  "height":32,
@@ -256,7 +256,7 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "draworder":"topdown",
          "name":"RightGuards",
@@ -272,7 +272,7 @@
                  "width":53,
                  "x":41.3333333333333,
                  "y":176.666666666667
-                }, 
+                },
                 {
                  "gid":29,
                  "height":32,
@@ -284,7 +284,7 @@
                  "width":53,
                  "x":544,
                  "y":352
-                }, 
+                },
                 {
                  "gid":29,
                  "height":32,
@@ -296,7 +296,7 @@
                  "width":53,
                  "x":584.666666666667,
                  "y":622.666666666667
-                }, 
+                },
                 {
                  "gid":29,
                  "height":32,
@@ -314,7 +314,7 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "draworder":"topdown",
          "name":"LeftGuards",
@@ -330,7 +330,7 @@
                  "width":53,
                  "x":704,
                  "y":736
-                }, 
+                },
                 {
                  "gid":30,
                  "height":32,
@@ -342,7 +342,7 @@
                  "width":53,
                  "x":484.666666666667,
                  "y":626
-                }, 
+                },
                 {
                  "gid":30,
                  "height":32,
@@ -354,7 +354,7 @@
                  "width":53,
                  "x":320,
                  "y":288
-                }, 
+                },
                 {
                  "gid":30,
                  "height":32,
@@ -366,7 +366,7 @@
                  "width":53,
                  "x":739.333333333333,
                  "y":177.333333333333
-                }, 
+                },
                 {
                  "gid":30,
                  "height":32,
@@ -378,7 +378,7 @@
                  "width":53,
                  "x":704,
                  "y":480
-                }, 
+                },
                 {
                  "gid":30,
                  "height":32,
@@ -396,7 +396,7 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "draworder":"topdown",
          "name":"UpGuards",
@@ -412,7 +412,7 @@
                  "width":32,
                  "x":448,
                  "y":544
-                }, 
+                },
                 {
                  "gid":37,
                  "height":64,
@@ -430,7 +430,7 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "draworder":"topdown",
          "name":"DownGuards",
@@ -446,7 +446,7 @@
                  "width":32,
                  "x":832,
                  "y":451.333333333333
-                }, 
+                },
                 {
                  "gid":34,
                  "height":64,
@@ -458,7 +458,7 @@
                  "width":32,
                  "x":352,
                  "y":128
-                }, 
+                },
                 {
                  "gid":34,
                  "height":64,
@@ -470,7 +470,7 @@
                  "width":32,
                  "x":544,
                  "y":128
-                }, 
+                },
                 {
                  "gid":34,
                  "height":64,
@@ -482,7 +482,7 @@
                  "width":32,
                  "x":416,
                  "y":288
-                }, 
+                },
                 {
                  "gid":34,
                  "height":64,
@@ -500,7 +500,7 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "draworder":"topdown",
          "name":"PlayerSpawn",
@@ -522,7 +522,7 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "draworder":"topdown",
          "name":"DoorLayer",
@@ -538,7 +538,7 @@
                  "width":32,
                  "x":768,
                  "y":736
-                }, 
+                },
                 {
                  "gid":22,
                  "height":32,
@@ -550,7 +550,7 @@
                  "width":32,
                  "x":640,
                  "y":736
-                }, 
+                },
                 {
                  "gid":12,
                  "height":32,
@@ -562,7 +562,7 @@
                  "width":32,
                  "x":384,
                  "y":736
-                }, 
+                },
                 {
                  "gid":11,
                  "height":32,
@@ -574,7 +574,7 @@
                  "width":32,
                  "x":512,
                  "y":672
-                }, 
+                },
                 {
                  "gid":11,
                  "height":32,
@@ -586,7 +586,7 @@
                  "width":32,
                  "x":704,
                  "y":576
-                }, 
+                },
                 {
                  "gid":11,
                  "height":32,
@@ -598,7 +598,7 @@
                  "width":32,
                  "x":832,
                  "y":576
-                }, 
+                },
                 {
                  "gid":11,
                  "height":32,
@@ -610,7 +610,7 @@
                  "width":32,
                  "x":448,
                  "y":576
-                }, 
+                },
                 {
                  "gid":11,
                  "height":32,
@@ -622,7 +622,7 @@
                  "width":32,
                  "x":192,
                  "y":576
-                }, 
+                },
                 {
                  "gid":11,
                  "height":32,
@@ -634,7 +634,7 @@
                  "width":32,
                  "x":320,
                  "y":448
-                }, 
+                },
                 {
                  "gid":11,
                  "height":32,
@@ -646,7 +646,7 @@
                  "width":32,
                  "x":64,
                  "y":448
-                }, 
+                },
                 {
                  "gid":11,
                  "height":32,
@@ -658,7 +658,7 @@
                  "width":32,
                  "x":192,
                  "y":352
-                }, 
+                },
                 {
                  "gid":11,
                  "height":32,
@@ -670,7 +670,7 @@
                  "width":32,
                  "x":352,
                  "y":224
-                }, 
+                },
                 {
                  "gid":11,
                  "height":32,
@@ -682,7 +682,7 @@
                  "width":32,
                  "x":448,
                  "y":224
-                }, 
+                },
                 {
                  "gid":11,
                  "height":32,
@@ -694,7 +694,7 @@
                  "width":32,
                  "x":544,
                  "y":224
-                }, 
+                },
                 {
                  "gid":11,
                  "height":32,
@@ -706,7 +706,7 @@
                  "width":32,
                  "x":672,
                  "y":128
-                }, 
+                },
                 {
                  "gid":11,
                  "height":32,
@@ -718,7 +718,7 @@
                  "width":32,
                  "x":128,
                  "y":128
-                }, 
+                },
                 {
                  "gid":11,
                  "height":32,
@@ -730,7 +730,7 @@
                  "width":32,
                  "x":864,
                  "y":128
-                }, 
+                },
                 {
                  "gid":22,
                  "height":32,
@@ -748,7 +748,7 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "draworder":"topdown",
          "name":"ExitDoorLayer",
@@ -789,7 +789,7 @@
          "tilecount":10,
          "tileheight":32,
          "tilewidth":32
-        }, 
+        },
         {
          "columns":1,
          "firstgid":11,
@@ -802,7 +802,7 @@
          "tilecount":1,
          "tileheight":32,
          "tilewidth":32
-        }, 
+        },
         {
          "columns":1,
          "firstgid":12,
@@ -815,7 +815,7 @@
          "tilecount":1,
          "tileheight":32,
          "tilewidth":32
-        }, 
+        },
         {
          "columns":1,
          "firstgid":13,
@@ -828,7 +828,7 @@
          "tilecount":1,
          "tileheight":32,
          "tilewidth":32
-        }, 
+        },
         {
          "columns":4,
          "firstgid":14,
@@ -841,7 +841,7 @@
          "tilecount":4,
          "tileheight":16,
          "tilewidth":16
-        }, 
+        },
         {
          "columns":4,
          "firstgid":18,
@@ -854,7 +854,7 @@
          "tilecount":4,
          "tileheight":16,
          "tilewidth":16
-        }, 
+        },
         {
          "columns":1,
          "firstgid":22,
@@ -867,7 +867,7 @@
          "tilecount":1,
          "tileheight":32,
          "tilewidth":32
-        }, 
+        },
         {
          "columns":2,
          "firstgid":23,
@@ -880,7 +880,7 @@
          "tilecount":2,
          "tileheight":32,
          "tilewidth":32
-        }, 
+        },
         {
          "columns":2,
          "firstgid":25,
@@ -893,7 +893,7 @@
          "tilecount":2,
          "tileheight":32,
          "tilewidth":32
-        }, 
+        },
         {
          "columns":2,
          "firstgid":27,
@@ -906,7 +906,7 @@
          "tilecount":6,
          "tileheight":32,
          "tilewidth":53
-        }, 
+        },
         {
          "columns":3,
          "firstgid":33,
@@ -924,564 +924,4 @@
  "type":"map",
  "version":1,
  "width":30
-=======
-{ "height":22,
- "infinite":false,
- "layers":[
-        {
-         "data":"AgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAA==",
-         "encoding":"base64",
-         "height":22,
-         "name":"GroundLayer",
-         "opacity":0.9,
-         "type":"tilelayer",
-         "visible":true,
-         "width":25,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "data":"AQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAABAAAAAAAAAAEAAAABAAAAAQAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAMAAAABAAAAAQAAAAEAAAAAAAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAAAAAAAAQAAAAEAAAABAAAAAQAAAAEAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAQAAAABAAAAAQAAAAAAAAABAAAAAQAAAAQAAAABAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAAAAAAEAAAABAAAAAAAAAAEAAAABAAAAAAAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAQAAAAEAAAAAAAAAAQAAAAEAAAAAAAAAAQAAAAEAAAABAAAAAQAAAAAAAAABAAAAAQAAAAAAAAABAAAAAQAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAEAAAABAAAAAAAAAAEAAAABAAAAAAAAAAEAAAABAAAAAQAAAAEAAAAAAAAAAQAAAAEAAAADAAAAAQAAAAEAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAMAAAABAAAAAQAAAAAAAAABAAAAAQAAAAAAAAABAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAA==",
-         "encoding":"base64",
-         "height":22,
-         "name":"WallLayer",
-         "opacity":0.9,
-         "type":"tilelayer",
-         "visible":true,
-         "width":25,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "name":"ExitDoorLayer",
-         "objects":[
-                {
-                 "gid":14,
-                 "height":32,
-                 "id":20,
-                 "name":"exitDoor",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":384,
-                 "y":96
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "name":"KeyLayer",
-         "objects":[
-                {
-                 "gid":15,
-                 "height":16,
-                 "id":23,
-                 "name":"key",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":710.5,
-                 "y":536.333333333333
-                }, 
-                {
-                 "gid":15,
-                 "height":16,
-                 "id":24,
-                 "name":"key",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":615.5,
-                 "y":537
-                }, 
-                {
-                 "gid":15,
-                 "height":16,
-                 "id":25,
-                 "name":"key",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":615.272727272727,
-                 "y":343.090909090909
-                }, 
-                {
-                 "gid":15,
-                 "height":16,
-                 "id":26,
-                 "name":"key",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":167.666666666667,
-                 "y":343.333333333333
-                }, 
-                {
-                 "gid":15,
-                 "height":16,
-                 "id":27,
-                 "name":"key",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":72.1818181818182,
-                 "y":87.2727272727273
-                }, 
-                {
-                 "gid":15,
-                 "height":16,
-                 "id":28,
-                 "name":"key",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":712,
-                 "y":86.6666666666667
-                }, 
-                {
-                 "gid":15,
-                 "height":16,
-                 "id":29,
-                 "name":"key",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":201.333333333333,
-                 "y":87.3333333333333
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "name":"UpGuards",
-         "objects":[
-                {
-                 "gid":29,
-                 "height":64,
-                 "id":90,
-                 "name":"upGuard",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":385,
-                 "y":670
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "name":"LeftGuards",
-         "objects":[
-                {
-                 "gid":24,
-                 "height":32,
-                 "id":79,
-                 "name":"leftGuard",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":53,
-                 "x":707.333333333333,
-                 "y":256
-                }, 
-                {
-                 "gid":24,
-                 "height":32,
-                 "id":80,
-                 "name":"leftGuard",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":53,
-                 "x":706,
-                 "y":194.666666666667
-                }, 
-                {
-                 "gid":24,
-                 "height":32,
-                 "id":81,
-                 "name":"leftGuard",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":53,
-                 "x":706.666666666667,
-                 "y":466
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "name":"RightGuards",
-         "objects":[
-                {
-                 "gid":23,
-                 "height":32,
-                 "id":72,
-                 "name":"rightGuard",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":53,
-                 "x":39.3333333333333,
-                 "y":658
-                }, 
-                {
-                 "gid":23,
-                 "height":32,
-                 "id":73,
-                 "name":"rightGuard",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":53,
-                 "x":38.6666666666667,
-                 "y":467.333333333333
-                }, 
-                {
-                 "gid":23,
-                 "height":32,
-                 "id":74,
-                 "name":"rightGuard",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":53,
-                 "x":38,
-                 "y":352.666666666667
-                }, 
-                {
-                 "gid":23,
-                 "height":32,
-                 "id":77,
-                 "name":"rightGuard",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":53,
-                 "x":37.3333333333333,
-                 "y":226
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "name":"DownGuards",
-         "objects":[
-                {
-                 "gid":26,
-                 "height":64,
-                 "id":85,
-                 "name":"downGuard",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":303.5,
-                 "y":131.5
-                }, 
-                {
-                 "gid":26,
-                 "height":64,
-                 "id":86,
-                 "name":"downGuard",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":466.5,
-                 "y":132
-                }, 
-                {
-                 "gid":26,
-                 "height":64,
-                 "id":88,
-                 "name":"downGuard",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":352,
-                 "y":323
-                }, 
-                {
-                 "gid":26,
-                 "height":64,
-                 "id":89,
-                 "name":"downGuard",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":416,
-                 "y":322
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "name":"DoorLayer",
-         "objects":[
-                {
-                 "gid":13,
-                 "height":32,
-                 "id":9,
-                 "name":"door",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":64,
-                 "y":608
-                }, 
-                {
-                 "gid":13,
-                 "height":32,
-                 "id":10,
-                 "name":"door",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":256,
-                 "y":608
-                }, 
-                {
-                 "gid":13,
-                 "height":32,
-                 "id":11,
-                 "name":"door",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":608,
-                 "y":608
-                }, 
-                {
-                 "gid":13,
-                 "height":32,
-                 "id":12,
-                 "name":"door",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":704,
-                 "y":608
-                }, 
-                {
-                 "gid":13,
-                 "height":32,
-                 "id":13,
-                 "name":"door",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":608,
-                 "y":416
-                }, 
-                {
-                 "gid":13,
-                 "height":32,
-                 "id":14,
-                 "name":"door",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":256,
-                 "y":416
-                }, 
-                {
-                 "gid":13,
-                 "height":32,
-                 "id":15,
-                 "name":"door",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":64,
-                 "y":416
-                }, 
-                {
-                 "gid":13,
-                 "height":32,
-                 "id":16,
-                 "name":"door",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":704,
-                 "y":160
-                }, 
-                {
-                 "gid":13,
-                 "height":32,
-                 "id":17,
-                 "name":"door",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":192,
-                 "y":160
-                }, 
-                {
-                 "gid":13,
-                 "height":32,
-                 "id":18,
-                 "name":"door",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":64,
-                 "y":160
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }],
- "nextobjectid":91,
- "orientation":"orthogonal",
- "renderorder":"right-down",
- "tiledversion":"1.1.2",
- "tileheight":32,
- "tilesets":[
-        {
-         "columns":4,
-         "firstgid":1,
-         "image":"..\/sprites\/tiles.png",
-         "imageheight":32,
-         "imagewidth":128,
-         "margin":0,
-         "name":"tiles",
-         "spacing":0,
-         "tilecount":6,
-         "tileheight":32,
-         "tilewidth":32
-        }, 
-        {
-         "columns":4,
-         "firstgid":7,
-         "image":"..\/sprites\/tiles.png",
-         "imageheight":32,
-         "imagewidth":128,
-         "margin":0,
-         "name":"tiles",
-         "spacing":0,
-         "tilecount":6,
-         "tileheight":32,
-         "tilewidth":32
-        }, 
-        {
-         "columns":1,
-         "firstgid":13,
-         "image":"..\/sprites\/door.png",
-         "imageheight":32,
-         "imagewidth":32,
-         "margin":0,
-         "name":"door",
-         "spacing":0,
-         "tilecount":1,
-         "tileheight":32,
-         "tilewidth":32
-        }, 
-        {
-         "columns":1,
-         "firstgid":14,
-         "image":"..\/sprites\/exit_door.png",
-         "imageheight":32,
-         "imagewidth":32,
-         "margin":0,
-         "name":"exit_door",
-         "spacing":0,
-         "tilecount":1,
-         "tileheight":32,
-         "tilewidth":32
-        }, 
-        {
-         "columns":4,
-         "firstgid":15,
-         "image":"..\/sprites\/key.png",
-         "imageheight":16,
-         "imagewidth":64,
-         "margin":0,
-         "name":"key",
-         "spacing":0,
-         "tilecount":4,
-         "tileheight":16,
-         "tilewidth":16
-        }, 
-        {
-         "columns":2,
-         "firstgid":19,
-         "image":"..\/sprites\/guardLeftRight.png",
-         "imageheight":96,
-         "imagewidth":106,
-         "margin":0,
-         "name":"guardLeftRight",
-         "spacing":0,
-         "tilecount":6,
-         "tileheight":32,
-         "tilewidth":53
-        }, 
-        {
-         "columns":3,
-         "firstgid":25,
-         "image":"..\/sprites\/guardUpDown.png",
-         "imageheight":128,
-         "imagewidth":96,
-         "margin":0,
-         "name":"guardUpDown",
-         "spacing":0,
-         "tilecount":6,
-         "tileheight":64,
-         "tilewidth":32
-        }],
- "tilewidth":32,
- "type":"map",
- "version":1,
- "width":25
->>>>>>> b9c215aa0ad6944290ebc64a5a5499c001dc5ac9:JailBreak/assets/levels/level2.json
 }
