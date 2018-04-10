@@ -63,6 +63,10 @@ GameStates.makeGame = function( game, shared ) {
         this.playerStep.volume = .3;
         this.alert = game.add.audio('alert');
         this.alert.volume = .3;
+        this.portal = game.add.audio('portal');
+        this.portal.volume = .3;
+        this.vial = game.add.audio('vial');
+        this.vial.volume = .3;
 
         // Sets up the tilemap for the world and its layers.
         this.map = game.add.tilemap('level2');
@@ -73,11 +77,41 @@ GameStates.makeGame = function( game, shared ) {
         this.wallLayer.resizeWorld();
 
         this.exitDoor = game.add.physicsGroup();
-        this.map.createFromObjects('ExitDoorLayer', 'exitDoor', 'exitDoor', [0], true, false, this.exitDoor);
+        this.map.createFromObjects('ExitDoorLayer', 'exitDoor', 'exitDoor', 0, true, false, this.exitDoor);
         this.exitDoor.forEach(block => {
           game.physics.enable(block, Phaser.Physics.ARCADE);
           block.body.immovable = true;
           block.body.allowGravity = false;
+        });
+
+        // Creation of the portals.d
+        this.bluePortals = game.add.physicsGroup();
+        this.map.createFromObjects('BluePortals', 'bluePortal', 'bluePortal', 0, true, false, this.bluePortals);
+        let portalID = 0;
+        this.bluePortals.forEach(portal => {
+          game.physics.enable(portal, Phaser.Physics.ARCADE);
+          portal.body.immovable = true;
+          portal.body.allowGravity = false;
+          portal.active = true;
+          portal.animations.add('active', [0], 1, true);
+          portal.animations.add('inactive', [1], 1, true);
+          portal.animations.play('active');
+          portal.id = portalID;
+          portalID++;
+        });
+        this.redPortals = game.add.physicsGroup();
+        this.map.createFromObjects('RedPortals', 'redPortal', 'redPortal', 0, true, false, this.redPortals);
+        portalID = 0;
+        this.redPortals.forEach(portal => {
+          game.physics.enable(portal, Phaser.Physics.ARCADE);
+          portal.body.immovable = true;
+          portal.body.allowGravity = false;
+          portal.active = true;
+          portal.animations.add('active', [0], 1, true);
+          portal.animations.add('inactive', [1], 1, true);
+          portal.animations.play('active');
+          portal.id = portalID;
+          portalID++;
         });
 
         this.keys = game.add.physicsGroup();
@@ -87,6 +121,14 @@ GameStates.makeGame = function( game, shared ) {
           key.body.immovable = true;
           key.animations.add('float', [0,1,2,3], 4, true);
           key.animations.play('float');
+        });
+
+        this.vials = game.add.physicsGroup();
+        this.map.createFromObjects('ItemLayer', 'vial', 'vial', 0, true, false, this.vials);
+        this.vials.forEach(vial => {
+          vial.body.immovable = true;
+          vial.animations.add('float', [0,1,2,3], 4, true);
+          vial.animations.play('float');
         });
 
         this.rightGuards = game.add.physicsGroup();
@@ -174,7 +216,15 @@ GameStates.makeGame = function( game, shared ) {
         this.tempGuards.destroy();
 
         // All of the code to create the player, their physics, and their animations.
-        this.player = game.add.sprite(74, 515, 'player');
+        // Creates the player character sprite.
+        this.playerGroup = game.add.physicsGroup();
+        this.map.createFromObjects('PlayerSpawn', 'playerSpawn', 'player', 'criminalDown', true, false, this.playerGroup);
+        this.playerGroup.forEach(player => {
+          // Since there is only the one player sprite, we can just direct assign it.
+          // Placing it at the location of the object spawn tile.
+          this.player = game.add.sprite(player.x, player.y, 'player');
+          player.kill(); // Destroys the object spawn tile - don't want some stretched penguin at the top of the screen!
+        });
         game.physics.arcade.enable(this.player);
         this.player.body.gravity.y = 0;
         this.player.body.gravity.x = 0;
@@ -190,6 +240,8 @@ GameStates.makeGame = function( game, shared ) {
 
         this.doors = game.add.physicsGroup();
         this.map.createFromObjects('DoorLayer', 'door', 'door', [0], true, false, this.doors);
+        this.map.createFromObjects('DoorLayer', 'door2', 'door2', [0], true, false, this.doors);
+        this.map.createFromObjects('DoorLayer', 'door3', 'door3', [0], true, false, this.doors);
 
 
         // Sets up the HUD.
@@ -225,6 +277,61 @@ GameStates.makeGame = function( game, shared ) {
             hasKey = true;
           }
         }, null, this);
+        // Player collision with vials.
+        game.physics.arcade.overlap(this.player, this.vials, (player, item) => {
+          if (item.name == 'vial') {
+            item.kill();
+            this.vial.play();
+            if (magicka < 100) {
+              magicka += 20;
+              confirmed = false;
+              if (magicka > 100) magicka = 100;
+            }
+            this.magickaBar.crop(new Phaser.Rectangle(0, 0, this.originalWidth * (magicka/100), this.magickaBar.height));
+          }
+        }, null, this);
+
+        // Player uses a portal
+        // blue
+        game.physics.arcade.overlap(this.player, this.bluePortals, (player, tile) => {
+          if (tile.active){
+            this.bluePortals.forEach((portal) => {
+              portal.active = false;
+              portal.animations.play('inactive');
+              if (tile.id != portal.id) {
+                this.portal.play();
+                this.player.x = portal.x;
+                this.player.y = portal.y;
+              }
+            }, this);
+            game.time.events.add(3000, () => {
+              this.bluePortals.forEach((portal) => {
+                portal.active = true;
+                portal.animations.play('active');
+              }, this);
+            });
+          }
+        });
+        // red
+        game.physics.arcade.overlap(this.player, this.redPortals, (player, tile) => {
+          if (tile.active){
+            this.redPortals.forEach((portal) => {
+              portal.active = false;
+              portal.animations.play('inactive');
+              if (tile.id != portal.id) {
+                this.portal.play();
+                this.player.x = portal.x;
+                this.player.y = portal.y;
+              }
+            }, this);
+            game.time.events.add(3000, () => {
+              this.redPortals.forEach((portal) => {
+                portal.active = true;
+                portal.animations.play('active');
+              }, this);
+            });
+          }
+        });
 
         // Collision for the exit door.
         this.exitDoor.forEach(block => {

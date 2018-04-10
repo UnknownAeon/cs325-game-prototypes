@@ -47,12 +47,22 @@ GameStates.makePreloader = function( game ) {
 			game.load.audio('keyhole', 'assets/audio/sounds/keyhole.wav');
 			game.load.audio('invisibility', 'assets/audio/sounds/invisibility.wav');
 			game.load.audio('alert', 'assets/audio/sounds/metal_gear_solid_alert.mp3');
+			game.load.audio('portal', 'assets/audio/sounds/portal.wav');
+			game.load.audio('vial', 'assets/audio/sounds/vial.wav');
 			// All the levels - just one for now!
+			game.load.tilemap('level1', 'assets/levels/level1.json', null, Phaser.Tilemap.TILED_JSON);
 			game.load.tilemap('level2', 'assets/levels/level2.json', null, Phaser.Tilemap.TILED_JSON);
 			game.load.image('tiles', 'assets/sprites/tiles.png');
 			game.load.image('door', 'assets/sprites/door.png');
+			game.load.image('door2', 'assets/sprites/door2.png');
+			game.load.image('door3', 'assets/sprites/door3.png');
+			game.load.spritesheet('bluePortal', 'assets/sprites/bluePortal.png', 32, 32);
+			game.load.spritesheet('redPortal', 'assets/sprites/redPortal.png', 32, 32);
+			game.load.spritesheet('greenPortal', 'assets/sprites/greenPortal.png', 32, 32);
+			game.load.spritesheet('orangePortal', 'assets/sprites/orangePortal.png', 32, 32);
 			game.load.image('exitDoor', 'assets/sprites/exit_door.png');
 			game.load.spritesheet('key', 'assets/sprites/key.png', 16, 16);
+			game.load.spritesheet('vial', 'assets/sprites/vial.png', 16, 16);
 
     },
 
