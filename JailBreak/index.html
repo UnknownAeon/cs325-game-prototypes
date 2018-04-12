@@ -41,7 +41,7 @@ body
 </li>
 
 <li><strong>Prototype Postmortem:</strong>
-	I am very satisfied with out this first demo of the game turned out - it contains all of the features that I had wanted to include. I am especially happy with the invisibility mechanic. Dr. Gingold mentioned the idea to me in class, so I took the idea and ran with it. I changed the theme of the game from a modern prison to a medieval dungeon and gave the character a magicka resource. I would like to improve the guards in the future however. Currently, their vision radius are connected to their actual sprite, so therefore their turning is a bit wonky and faster than I wanted. I plan to make them seperate sprites but conenct them with a group later on.
+	I am very happy with how this second iteration turned out! I managed to implement all of the features that I could think of adding for the second iteration and the game seems to still feel like the same game that it was before. I am very happy with how the magicka circles turn out as well, and the way that they block off the magicka usage. I also am very happy with them, because I managed to find a way to create a circular physics body for them, so there is no overlap unless the player is actually touching the circle! Lastly, although they are simple, I am very happy with how the "wizard guards" turned out. It seemed like it would be easy to create an enemy that just rotated, but since they sprites are not the same size for each direction, it took a bit of manipulating to make sure the sprite wasn't moving around with each turn.
 </li>
 
 <li><strong>Prototype Assets:</strong>
@@ -56,7 +56,15 @@ body
 </li>
 
 <li><strong>Prototype Closest Other Game:</strong>
-	This is the first digital iteration of this project, so therefore my closest other game would be my physical prototype. I learned a few things from the physical prototype: A player needs to be able to move at the same time as the guards if they guards are going to walk a set path, otherwise it won't be challenging. To make the game hard, I had to increase the number of guards. Lastly, I also learned that I needed some option for the player to hide from the guards if they were in a tough spot, but without it making the game too easy.
+	<p>Since this is the second iteration of my digital prototype, the clostest game would be the first iteration! In this version of the game I have added two new levels that include a number of new features/mechanics. The game smoothly transitions between the levels whenever you complete one, and losing a level takes you back to the beginning of the level rather than the beginning of the game.</p>
+	<p>What was added:
+		<ul>
+			<li>Added a magicka vial item. Picking it up restores a small amount of magicka. You cannot go above the cap of 100 though, so do not pick it up when you are full!</li>
+			<li>Added portals on the ground in some locations. The portals will teleport you to the matching portal elsewhere on the level. There are four colors: blue, red, green, and orange. When a portal is used it becomes a gray and musst recharge - this only take a moment, it was added to ensure you didn't instantly teleport back. Level 2 contains two portals, level 3 contains all 4.</li>
+			<li>Added a "magicka lock" circle. In level 3 there are blue circles with runes on them. Standing on these circles will disable your ability to use magicka and turn invisible. A noise will sound and a lock will appear on your magicka bar to signify you cant use it.</li>
+			<li>Added "wizard guards". In level 3 there are yellow guards that look like the player. They are the guards that created the magicka circles. They stand in one place (on magicka circles), and they do not move. They will change the direction they are looking once every 3 seconds or so.</li>
+	</ul>
+</p>
 </li>
 
 <li><strong>High Concept:</strong>

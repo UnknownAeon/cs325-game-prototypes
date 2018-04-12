@@ -29,8 +29,8 @@ GameStates.makeMainMenu = function( game, shared ) {
 		if (page == 1) {
 			instructions = game.add.sprite(0, 0, 'instructions1');
 			page++;
-			nextFrame = game.add.sprite(game.world.centerX - 132, 445, 'buttonFrame');
-      nextButton = game.add.button(game.world.centerX - 128, 448, 'continueButton', showInstructions, null, 0, 1, 2);
+			nextFrame = game.add.sprite(400 - 132, 445, 'buttonFrame');
+      nextButton = game.add.button(400 - 128, 448, 'continueButton', showInstructions, null, 0, 1, 2);
 		}
 		else if (page == 2) {
 			page++;
@@ -39,8 +39,8 @@ GameStates.makeMainMenu = function( game, shared ) {
 			nextFrame = null;
 			nextButton.kill();
 			nextButton = null;
-			nextFrame = game.add.sprite(game.world.centerX - 132, 445, 'buttonFrame');
-      nextButton = game.add.button(game.world.centerX - 128, 448, 'continueButton', showInstructions, null, 0, 1, 2);
+			nextFrame = game.add.sprite(400 - 132, 445, 'buttonFrame');
+      nextButton = game.add.button(400 - 128, 448, 'continueButton', showInstructions, null, 0, 1, 2);
 		}
 		else if (page == 3){
 			page++;
@@ -49,8 +49,8 @@ GameStates.makeMainMenu = function( game, shared ) {
 			nextFrame = null;
 			nextButton.kill();
 			nextButton = null;
-			closeFrame = game.add.sprite(game.world.centerX - 132, 445, 'buttonFrame');
-      closeButton = game.add.button(game.world.centerX - 128, 448, 'closeButton', showInstructions, null, 0, 1, 2);
+			closeFrame = game.add.sprite(400 - 132, 445, 'buttonFrame');
+      closeButton = game.add.button(400 - 128, 448, 'closeButton', showInstructions, null, 0, 1, 2);
 		}
 		else {
 			page = 1;
@@ -77,10 +77,10 @@ GameStates.makeMainMenu = function( game, shared ) {
 			let title = game.add.sprite(0, 0, 'title');
 
 			// Sets up the buttons in the center of the screen.
-			let playButtonFrame = game.add.sprite(game.world.centerX - 132, 350, 'buttonFrame');
-      let playButton = game.add.button(game.world.centerX - 128, 353, 'startButton', startGame, null, 0, 1, 2);
-			let instButtonFrame = game.add.sprite(game.world.centerX - 132, 410, 'buttonFrame');
-      let instButton = game.add.button(game.world.centerX - 128, 413, 'instructionsButton', showInstructions, null, 0, 1, 2);
+			let playButtonFrame = game.add.sprite(400 - 132, 350, 'buttonFrame');
+      let playButton = game.add.button(400 - 128, 353, 'startButton', startGame, null, 0, 1, 2);
+			let instButtonFrame = game.add.sprite(400 - 132, 410, 'buttonFrame');
+      let instButton = game.add.button(400 - 128, 413, 'instructionsButton', showInstructions, null, 0, 1, 2);
 	  },
 
 	  update: function () {

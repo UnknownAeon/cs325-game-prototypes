@@ -3,41 +3,115 @@
 GameStates.makeGame = function( game, shared ) {
     // All the different variables at use throughout the program.
     let playerDirection = 'down';
+    var currentLevel = 1;
+    var locked = false;
     var confirmed  = false;
+    var confirmed2 = true;
     var ethereal = false;
     var hasKey = false;
     var magicka = 100;
     var remainingKeys = 0;
+    var wizards = false;
+    var turnTimer = 0;
 
     function quitGame() {
       //  Here you should destroy anything you no longer need.
       //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
+      //  Then let's go back to the main menu.
+      this.music.stop();
       ethereal = false;
+      locked = false;
       hasKey = false;
+      wizards = false;
+      confirmed  = false;
+      confirmed2 = true;
       magicka = 100;
       remainingKeys = 0;
-      //  Then let's go back to the main menu.
       game.state.start('MainMenu');
     }
 
     // Restarts the game state whenever a game over or a win occurs.
     function restart() {
       this.music.stop();
+      ethereal = false;
+      locked = false;
+      hasKey = false;
+      wizards = false;
+      confirmed  = false;
+      confirmed2 = true;
+      magicka = 100;
+      remainingKeys = 0;
       game.state.restart();
-      quitGame();
+    }
+
+    function levelComplete() {
+      game.time.reset();
+      this.music.stop();
+      ethereal = false;
+      locked = false;
+      hasKey = false;
+      wizards = false;
+      confirmed  = false;
+      confirmed2 = true;
+      magicka = 100;
+      remainingKeys = 0;
+      if (currentLevel == 3) {
+        gameWin();
+      }
+      else {
+        currentLevel++;
+        game.state.restart();
+      }
+    }
+
+    function gameWin() {
+      this.player.kill();
+      let win = game.add.text(300, 250, 'You Win!', {fill:'white', fontSize:'50px', boundsAlignH:'center', boundsAlignV:'middle'});
+      win.fixedToCamera = true;
+      game.time.events.add(5000, quitGame, this);
     }
 
     function turnEthereal() {
-      if (ethereal) {
-        ethereal = false;
-        this.player.animations.play('criminalDown');
-        this.invisible.play();
-      }
-      else if (!ethereal && magicka > 0) {
-        ethereal = true;
-        this.player.animations.play('ghostDown');
-        this.invisible.play();
-      }
+        if (ethereal) {
+          ethereal = false;
+          this.player.animations.play('criminalDown');
+          this.invisible.play();
+        }
+        else if (!ethereal && magicka > 0 && !locked) {
+          ethereal = true;
+          this.player.animations.play('ghostDown');
+          this.invisible.play();
+        }
+    }
+
+    function wizardRotate(wizardGroup) {
+        wizardGroup.forEach(guard => {
+        let facing = Math.floor(Math.random() * 4);
+        if (facing == 0) {
+          guard.facing = 'up';
+          guard.animations.play('lookUp');
+          guard.x = guard.initX;
+          guard.y = guard.initY - 33;
+        }
+        else if (facing == 1) {
+          guard.facing = 'down';
+          guard.animations.play('lookDown');
+          guard.x = guard.initX;
+          guard.y = guard.initY;
+        }
+        else if (facing == 2) {
+          guard.facing = 'left';
+          guard.animations.play('lookLeft');
+          guard.y = guard.initY;
+          guard.x = guard.initX - 26;
+        }
+        else if (facing == 3) {
+          guard.facing = 'right';
+          guard.animations.play('lookRight');
+          guard.y = guard.initY;
+          guard.x = guard.initX + 10;
+        }
+      });
     }
 
     return {
@@ -67,9 +141,11 @@ GameStates.makeGame = function( game, shared ) {
         this.portal.volume = .3;
         this.vial = game.add.audio('vial');
         this.vial.volume = .3;
+        this.magicLock = game.add.audio('magicLock');
+        this.magicLock.volume = .3;
 
         // Sets up the tilemap for the world and its layers.
-        this.map = game.add.tilemap('level2');
+        this.map = game.add.tilemap('level' + currentLevel);
         this.map.addTilesetImage('tiles', 'tiles');
         let groundLayer = this.map.createLayer('GroundLayer');
         this.wallLayer = this.map.createLayer('WallLayer');
@@ -112,6 +188,42 @@ GameStates.makeGame = function( game, shared ) {
           portal.animations.play('active');
           portal.id = portalID;
           portalID++;
+        });
+        this.greenPortals = game.add.physicsGroup();
+        this.map.createFromObjects('GreenPortals', 'greenPortal', 'greenPortal', 0, true, false, this.greenPortals);
+        portalID = 0;
+        this.greenPortals.forEach(portal => {
+          game.physics.enable(portal, Phaser.Physics.ARCADE);
+          portal.body.immovable = true;
+          portal.body.allowGravity = false;
+          portal.active = true;
+          portal.animations.add('active', [0], 1, true);
+          portal.animations.add('inactive', [1], 1, true);
+          portal.animations.play('active');
+          portal.id = portalID;
+          portalID++;
+        });
+        this.orangePortals = game.add.physicsGroup();
+        this.map.createFromObjects('OrangePortals', 'orangePortal', 'orangePortal', 0, true, false, this.orangePortals);
+        portalID = 0;
+        this.orangePortals.forEach(portal => {
+          game.physics.enable(portal, Phaser.Physics.ARCADE);
+          portal.body.immovable = true;
+          portal.body.allowGravity = false;
+          portal.active = true;
+          portal.animations.add('active', [0], 1, true);
+          portal.animations.add('inactive', [1], 1, true);
+          portal.animations.play('active');
+          portal.id = portalID;
+          portalID++;
+        });
+        this.wizardCircles = game.add.physicsGroup();
+        this.map.createFromObjects('WizardCircleLayer', 'wizardCircle', 'wizardCircle', 0, true, false, this.wizardCircles);
+        this.wizardCircles.forEach(circle => {
+          game.physics.enable(circle, Phaser.Physics.ARCADE);
+          circle.body.immovable = true;
+          circle.body.allowGravity = false;
+          circle.body.setCircle(44);
         });
 
         this.keys = game.add.physicsGroup();
@@ -215,6 +327,30 @@ GameStates.makeGame = function( game, shared ) {
         });
         this.tempGuards.destroy();
 
+        // The wizard guards.
+        this.wizardGroup = game.add.physicsGroup();
+        this.tempGroup = game.add.physicsGroup();
+        this.map.createFromObjects('WizardSpawn','wizardSpawn', 'wizardGuard', 'wizardDown', true, false, this.tempGroup);
+        this.tempGroup.forEach(wizard => {
+          let wizardGuard = game.add.sprite(wizard.x, wizard.y, 'wizardGuard');
+          game.physics.arcade.enable(wizardGuard);
+          wizardGuard.animations.add('lookDown', ['wizardDown'], 1, true);
+          wizardGuard.animations.add('lookLeft', ['wizardLeft'], 1, true);
+          wizardGuard.animations.add('lookRight', ['wizardRight'], 1, true);
+          wizardGuard.animations.add('lookUp', ['wizardUp'], 1, true);
+          wizardGuard.animations.play('lookDown');
+          wizardGuard.initX = wizard.x;
+          wizardGuard.initY = wizard.y;
+          wizardGuard.body.gravity.x = 0;
+          wizardGuard.body.gravity.y = 0;
+          wizardGuard.body.velocity.y = 0;
+          wizardGuard.body.velocity.x = 0;
+          wizardGuard.facing = 'down';
+          this.wizardGroup.add(wizardGuard);
+          wizard.kill();
+          wizards = true;
+        });
+
         // All of the code to create the player, their physics, and their animations.
         // Creates the player character sprite.
         this.playerGroup = game.add.physicsGroup();
@@ -253,6 +389,9 @@ GameStates.makeGame = function( game, shared ) {
         this.magickaBar = game.add.sprite(8, 13, 'magicka_bar');
         this.HUD.add(this.magickaBar);
         this.originalWidth = this.magickaBar.width;
+        this.magickaLock = game.add.sprite(5, 10, 'magicka_lock');
+        this.HUD.add(this.magickaLock);
+        this.magickaLock.kill();
 
         // ALl of the code to set up the controls for the plaer.
         this.upKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
@@ -263,9 +402,18 @@ GameStates.makeGame = function( game, shared ) {
         this.actionKey.onDown.add(turnEthereal,this);
 
         game.camera.follow(this.player); // Enables camera to follow player.
+
+         if (wizards) {
+           wizardRotate(this.wizardGroup);
+         }
       },
 
       update: function () {
+        if (wizards && game.time.now > turnTimer) {
+          wizardRotate(this.wizardGroup);
+          turnTimer = game.time.now + 3000;
+        }
+
         // All of the collision detection.
         game.physics.arcade.collide(this.player, this.wallLayer);
 
@@ -290,6 +438,22 @@ GameStates.makeGame = function( game, shared ) {
             this.magickaBar.crop(new Phaser.Rectangle(0, 0, this.originalWidth * (magicka/100), this.magickaBar.height));
           }
         }, null, this);
+
+        // player collision with wizard circles.
+        locked = game.physics.arcade.overlap(this.player, this.wizardCircles, null);
+        if (locked) {
+          this.magickaLock.revive();
+          ethereal = false;
+          this.player.animations.play('criminalDown');
+          if (confirmed2) {
+            confirmed2 = false;
+            this.magicLock.play();
+          }
+        }
+        else {
+          this.magickaLock.kill();
+          confirmed2 = true;
+        }
 
         // Player uses a portal
         // blue
@@ -332,6 +496,46 @@ GameStates.makeGame = function( game, shared ) {
             });
           }
         });
+        // green
+        game.physics.arcade.overlap(this.player, this.greenPortals, (player, tile) => {
+          if (tile.active){
+            this.greenPortals.forEach((portal) => {
+              portal.active = false;
+              portal.animations.play('inactive');
+              if (tile.id != portal.id) {
+                this.portal.play();
+                this.player.x = portal.x;
+                this.player.y = portal.y;
+              }
+            }, this);
+            game.time.events.add(3000, () => {
+              this.greenPortals.forEach((portal) => {
+                portal.active = true;
+                portal.animations.play('active');
+              }, this);
+            });
+          }
+        });
+        // orange
+        game.physics.arcade.overlap(this.player, this.orangePortals, (player, tile) => {
+          if (tile.active){
+            this.orangePortals.forEach((portal) => {
+              portal.active = false;
+              portal.animations.play('inactive');
+              if (tile.id != portal.id) {
+                this.portal.play();
+                this.player.x = portal.x;
+                this.player.y = portal.y;
+              }
+            }, this);
+            game.time.events.add(3000, () => {
+              this.orangePortals.forEach((portal) => {
+                portal.active = true;
+                portal.animations.play('active');
+              }, this);
+            });
+          }
+        });
 
         // Collision for the exit door.
         this.exitDoor.forEach(block => {
@@ -344,12 +548,12 @@ GameStates.makeGame = function( game, shared ) {
             }
             if (remainingKeys == 0) {
               this.player.kill();
-              let win = game.add.text(300, 250, 'YOU WIN!', {fill:'white', fontSize:'50px', boundsAlignH:'center', boundsAlignV:'middle'});
+              let win = game.add.text(200, 250, 'Level Complete!', {fill:'white', fontSize:'50px', boundsAlignH:'center', boundsAlignV:'middle'});
               win.fixedToCamera = true;
-              game.time.events.add(5000, restart, this);
+              game.time.events.add(5000, levelComplete, this);
             }
           }, null, this);
-          // Guard Collision
+          // Guard
           this.upGuards.forEach(guard => {
             game.physics.arcade.collide(guard, block, () => {
               if (guard.direction == 'down') {
@@ -367,6 +571,19 @@ GameStates.makeGame = function( game, shared ) {
         });
 
         // Collision detection for the guards
+        this.wizardGroup.forEach(guard => {
+          game.physics.arcade.overlap(guard, this.player, () => {
+            if (!ethereal) {
+              this.player.kill();
+              this.alert.play();
+              guard.body.velocity.x = 0;
+              guard.body.velocity.y = 0;
+                let gameOver = game.add.text(275, 250, 'CAUGHT!', {fill:'white', fontSize:'50px', boundsAlignH:'center', boundsAlignV:'middle'});
+              gameOver.fixedToCamera = true;
+              game.time.events.add(5000, restart, this);
+            }
+          }, null, this);
+        });
         this.leftGuards.forEach(guard => {
           game.physics.arcade.collide(guard, this.wallLayer, () => {
             if (guard.direction == 'left') {
@@ -387,7 +604,7 @@ GameStates.makeGame = function( game, shared ) {
               this.alert.play();
               guard.body.velocity.x = 0;
               guard.body.velocity.y = 0;
-              let gameOver = game.add.text(225, 250, 'GAME OVER!', {fill:'white', fontSize:'50px', boundsAlignH:'center', boundsAlignV:'middle'});
+              let gameOver = game.add.text(275, 250, 'CAUGHT!', {fill:'white', fontSize:'50px', boundsAlignH:'center', boundsAlignV:'middle'});
               gameOver.fixedToCamera = true;
               game.time.events.add(5000, restart, this);
             }
@@ -413,7 +630,7 @@ GameStates.makeGame = function( game, shared ) {
               this.alert.play();
               guard.body.velocity.x = 0;
               guard.body.velocity.y = 0;
-              let gameOver = game.add.text(225, 250, 'GAME OVER!', {fill:'white', fontSize:'50px', boundsAlignH:'center', boundsAlignV:'middle'});
+              let gameOver = game.add.text(275, 250, 'CAUGHT!', {fill:'white', fontSize:'50px', boundsAlignH:'center', boundsAlignV:'middle'});
               gameOver.fixedToCamera = true;
               game.time.events.add(5000, restart, this);
             }
@@ -439,7 +656,7 @@ GameStates.makeGame = function( game, shared ) {
               this.alert.play();
               guard.body.velocity.x = 0;
               guard.body.velocity.y = 0;
-              let gameOver = game.add.text(225, 250, 'GAME OVER!', {fill:'white', fontSize:'50px', boundsAlignH:'center', boundsAlignV:'middle'});
+              let gameOver = game.add.text(275, 250, 'CAUGHT!', {fill:'white', fontSize:'50px', boundsAlignH:'center', boundsAlignV:'middle'});
               gameOver.fixedToCamera = true;
               game.time.events.add(5000, restart, this);
             }
@@ -465,7 +682,7 @@ GameStates.makeGame = function( game, shared ) {
               this.alert.play();
               guard.body.velocity.x = 0;
               guard.body.velocity.y = 0;
-              let gameOver = game.add.text(225, 250, 'GAME OVER!', {fill:'white', fontSize:'50px', boundsAlignH:'center', boundsAlignV:'middle'});
+              let gameOver = game.add.text(275, 250, 'CAUGHT!', {fill:'white', fontSize:'50px', boundsAlignH:'center', boundsAlignV:'middle'});
               gameOver.fixedToCamera = true;
               game.time.events.add(5000, restart, this);
             }

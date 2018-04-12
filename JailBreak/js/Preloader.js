@@ -40,7 +40,9 @@ GameStates.makePreloader = function( game ) {
 			game.load.atlas('player', 'assets/sprites/criminal.png', 'assets/sprites/criminal.json');
 			game.load.atlas('guardLeftRight', 'assets/sprites/guardLeftRight.png', 'assets/sprites/guardLeftRight.json');
 			game.load.atlas('guardUpDown', 'assets/sprites/guardUpDown.png', 'assets/sprites/guardUpDown.json');
+			game.load.atlas('wizardGuard', 'assets/sprites/wizardGuard.png', 'assets/sprites/wizardGuard.json');
 			game.load.image('magicka_frame', 'assets/images/magicka_frame.png');
+			game.load.image('magicka_lock', 'assets/images/magicka_lock.png');
 			game.load.image('magicka_bar', 'assets/images/magicka_bar.png');
 			// Sound Stuffs
 			game.load.audio('key', 'assets/audio/sounds/key.wav');
@@ -49,13 +51,16 @@ GameStates.makePreloader = function( game ) {
 			game.load.audio('alert', 'assets/audio/sounds/metal_gear_solid_alert.mp3');
 			game.load.audio('portal', 'assets/audio/sounds/portal.wav');
 			game.load.audio('vial', 'assets/audio/sounds/vial.wav');
+			game.load.audio('magicLock', 'assets/audio/sounds/magicLock.wav');
 			// All the levels - just one for now!
 			game.load.tilemap('level1', 'assets/levels/level1.json', null, Phaser.Tilemap.TILED_JSON);
 			game.load.tilemap('level2', 'assets/levels/level2.json', null, Phaser.Tilemap.TILED_JSON);
+			game.load.tilemap('level3', 'assets/levels/level3.json', null, Phaser.Tilemap.TILED_JSON);
 			game.load.image('tiles', 'assets/sprites/tiles.png');
 			game.load.image('door', 'assets/sprites/door.png');
 			game.load.image('door2', 'assets/sprites/door2.png');
 			game.load.image('door3', 'assets/sprites/door3.png');
+			game.load.image('wizardCircle', 'assets/sprites/wizardCircle.png');
 			game.load.spritesheet('bluePortal', 'assets/sprites/bluePortal.png', 32, 32);
 			game.load.spritesheet('redPortal', 'assets/sprites/redPortal.png', 32, 32);
 			game.load.spritesheet('greenPortal', 'assets/sprites/greenPortal.png', 32, 32);
