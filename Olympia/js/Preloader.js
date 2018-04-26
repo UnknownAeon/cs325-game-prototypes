@@ -35,7 +35,12 @@ GameStates.makePreloader = function( game ) {
 			game.load.audio('titleMusic', 'assets/audio/music/artemis.mp3');
 
 			// Game stuff
+			game.load.tilemap('level', 'assets/level.json', null, Phaser.Tilemap.TILED_JSON);
+			game.load.image('tiles', 'assets/spritesheets/tiles.png');
 			game.load.audio('mainMusic', 'assets/audio/music/greek_myths.mp3');
+			game.load.image('water_frame', 'assets/images/water_frame.png');
+			game.load.image('water_bar', 'assets/images/water_bar.png');
+			game.load.spritesheet('player', 'assets/spritesheets/sprite_big.png', 30, 54);
     },
 
     create: function () {
