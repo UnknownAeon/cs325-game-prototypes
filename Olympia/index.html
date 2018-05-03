@@ -29,50 +29,40 @@ body
 <body>
 <div id="game"></div>
 <div id="readme">
-<h2>Jailbreak</h2>
+<h2>Olympia</h2>
 
 <ul>
 <li><strong>Originality:</strong>
-	My game is original in its use of a collectathon style top-down game mixed with a stealth game. Players must collect all of the keys to escape. The player has the ability to use magic to make themselves invisible as well.
-</li>
+My game is original because I took the concept of resource management and attached it to  necessary mechanic in any game - movement. All actions in the game take up some of your limited resource, this includes moving, jumping, and attacking. If you run out of the resource you die. You have to manage it properly in order to win!
+	</li>
 
 <li><strong>Technical Merit:</strong>
-	I personally am very proud of the invisibility mechanic that I implemented and the polish behind it. I had to do a lot of manipulating to the sprite to make it look ethereal, and it also took a bit of work to implement all the features that the invisibility included. My favorite however is the magicka bar that depletes as you use the ability.
-</li>
+There are a few things I am happy with in this prototype. First of all, the resource management works perfectly with the movement mechanics. It drains at a fast but at a fair pace, so that you are only really in trouble if you use your movement frivelously. Secondly, I am very proud of the water pools. They work perfectly as a way to refresh your resource, but they also serve as a check point system as you climb the mountain. I have never toyed with the idea moving player spawns and it was fun to implement it. Lastly, I believe my implementation of the bat enemy had some merit to it. I used angles in order to move the bat rather than coordinates so that the bat could move directly to the player regardless if they were moving or not. I also created an invisible "home" for the bat, when the player comes in range, the bat chases. When the player leaves the range, the bat returns "home".
+	</li>
 
 <li><strong>Prototype Postmortem:</strong>
-	I am very happy with how this second iteration turned out! I managed to implement all of the features that I could think of adding for the second iteration and the game seems to still feel like the same game that it was before. I am very happy with how the magicka circles turn out as well, and the way that they block off the magicka usage. I also am very happy with them, because I managed to find a way to create a circular physics body for them, so there is no overlap unless the player is actually touching the circle! Lastly, although they are simple, I am very happy with how the "wizard guards" turned out. It seemed like it would be easy to create an enemy that just rotated, but since they sprites are not the same size for each direction, it took a bit of manipulating to make sure the sprite wasn't moving around with each turn.
+I am happy with this prototype to an extent. I had been planning it for a while, and though I am very proud of what I managed to accomplish this week, I am not happy with the lack of content. I was unable to work on this game in the first iteration because all of my final project deadlines lined up with it and therefore I just didn't have the time to work on it. I had planned to have a couple different enemies including ones that patrol, and ones that jump towards the player. I had also planned on having a complete level with an ending/winning sequence. Unfortunately, due to time constraints I spent most my time testing mechanics in a sandbox and only had time to complete a single enemy and half the level. That being said, I am proud of what I accomplished and I think I created a very unique mechanic and some nice looking visuals.
 </li>
 
 <li><strong>Prototype Assets:</strong>
-	The assets that were borrowed for this assignment were all of the sounds, the title screen background, and the player/guard sprites. However, I did a very large amount of editing to the sprites I downloaded. The tile set and the key sprites, as well as all of the gui elements (buttons, menus, magicka bar) were created by me.
+	Only the music and sound effects were borrowed for this game. All visual assets (sprites, images, menues) were made by me, with the exception of the title screen image of olympus.
+	<li><a href='https://gycinn.deviantart.com/art/Mount-Olympus-372797520'>Title Screen Image - Mount Olympus</a></li>
 	<li>Music and Sound Effects:</li>
-	<li><a href='https://www.youtube.com/watch?v=0Og6y85IHXA'>High Dungeon</a></li>
-	<li><a href='https://www.youtube.com/watch?v=06giQUGyrUg'>The Dungeon - Brissette Ray</a></li>
+	<li>The two songs used were Greek Myths and Artemis, by Derek Fletcher</li>
 	<li><a href='https://opengameart.org/content/512-sound-effects-8-bit-style'>512 Sound Effects (8-bit style)</a></li>
-	<li>Spritesheets:</li>
-	<li><a href='http://www.angelfire.com/rpg2/storage1/1000pc/ShadowMan.png'>Shadow Man</a></li>
-	<li><a href='http://www.angelfire.com/rpg2/storage1/1000pc/SeomeSoldiers.png'>Seome Soldiers</a></li>
+
 </li>
 
 <li><strong>Prototype Closest Other Game:</strong>
-	<p>Since this is the second iteration of my digital prototype, the clostest game would be the first iteration! In this version of the game I have added two new levels that include a number of new features/mechanics. The game smoothly transitions between the levels whenever you complete one, and losing a level takes you back to the beginning of the level rather than the beginning of the game.</p>
-	<p>What was added:
-		<ul>
-			<li>Added a magicka vial item. Picking it up restores a small amount of magicka. You cannot go above the cap of 100 though, so do not pick it up when you are full!</li>
-			<li>Added portals on the ground in some locations. The portals will teleport you to the matching portal elsewhere on the level. There are four colors: blue, red, green, and orange. When a portal is used it becomes a gray and musst recharge - this only take a moment, it was added to ensure you didn't instantly teleport back. Level 2 contains two portals, level 3 contains all 4.</li>
-			<li>Added a "magicka lock" circle. In level 3 there are blue circles with runes on them. Standing on these circles will disable your ability to use magicka and turn invisible. A noise will sound and a lock will appear on your magicka bar to signify you cant use it.</li>
-			<li>Added "wizard guards". In level 3 there are yellow guards that look like the player. They are the guards that created the magicka circles. They stand in one place (on magicka circles), and they do not move. They will change the direction they are looking once every 3 seconds or so.</li>
-	</ul>
-</p>
+	The closest other game to this one that would be my very first prototype The Mystic Gems. I used that prototype as a starting point for this one, because I really liked the feel of the controls and I was very proud of that prototype. I tweaked the controls to make up for the fact that you are traveling up rather than down in the game, and went off from there!
 </li>
 
 <li><strong>High Concept:</strong>
-	You are a wizard who has been thrown in jail; use your magic and stealth to escape from the dungeon!
+You are a demigod trying to reach Olympus; maintain your water meter to ensure you don't die while you make the perilous climb - the meter drains as you move.
 </li>
 
 <li><strong>Theme:</strong>
-	Since there was no required theme for this game, the theme that I came up with was Prison Break.
+	Since there was no required theme for this game, the theme that I came up with was Greek Mythology.
 </li>
 
 <li><strong>Mandated Variety:</strong>
@@ -80,32 +70,31 @@ body
 </li>
 
 <li><strong>Prototype Goal:</strong>
-	I had a few mechanics that I was evaluating for this prototype. Firstly was the invisibility mechanic, which worked perfectly. Secondly was the mechanic one delivering keys one at a time - this proves to be difficult to do in the game! Lastly, I was evaluating the detection of the player by the guards if they are not invisible - this could use a little work.
+	I had a few mechanics that I was evaluating for this prototype. Firstly was the resource management tied to mundane normal game controls. Secondly, was the pools - a way to restore the resource and also be a checkpoint system. Lastly, was the chasing bat enemy that followed you while in its area.
 </li>
 
 <li><strong>Player Experience Goals:</strong>
-	I would like the players to experience a fun, but slow paced game. It is very challenging and this is on purpose, it should give the anxious feel of breaking out of the prison. It honestly may be a little too difficult, and I will decrease the difficulty if there are any complaints.
-</li>
+	I would like the players to experience a fun, not too difficult platformer. However, I wanted it to be a unique and intersting experience.
 
 <li><strong>Gameplay:</strong>
-	The player's goal is to collect all of the keys and bring them to the main door to escape the dungeon. However, the catch is that the play can only carry one key at a time, and there are multiple keys scattered throughout the dungeon! Many many guards roam the dungeon, and if you get caught you are returned to your cell and all the keys are taken back to their spots (game over!). You can move your character with wasd, and you can press the e key to toggle your invisibility power. Be careful though, you only have a limited amount of magicka! The bar at the top left shows you how much remains.
+	The player's goal is to simply climb to the top of the level without running out of water! However, the level is sadly incomplete so you can get a little over halfway before there is nothing left to do but close the game.
 </li>
 
 <li><strong>Strategies:</strong>
-	Take things slow, and avoid the guards. Do not do anything risk, because if you are caught you have to restart. Don't leave your invisibility on for long! Just toggle it to pass through an enemy and then turn it off.
+	Pay attention to your water meter and don't perform actions willy-nilly. Jumping uses more upfront water than walking to prevent players from jumping non-stop to avoid the resource tax. Attacking costs a lot of water, so jumping on bats is always the more economic options, then not always the safest!
 </li>
 
 <li><strong>Story/Setting/Premise:</strong>
-	The game takes place in a medieval era, in a world full of  magic. You play as a trickster wizard who was arrested for some petty crime that resulted from a prank of his. Obviously he can't stay and serve his sentence though, he is a wizard! Use your powers to conceal yourself and attempt to escape, so that you can continue your pranks!
+You are a demigod, the son of Poseidon. For your great deeds you have be elected to join the gods in Olympus.  You must make your way there while avoiding the minions of Hades to take your place among the Pantheon! Careful though, you are no god yet, and as a mere mortal your connection to the ocean drains your lifeforce while you are away from water.
 </li>
 
 <li><strong>Target Audience:</strong>
-	Anyone who likes difficult games, stealth games, or top down games.
+	Anyone who likes platformers with an interesting spin on them.
 </li>
 
 <li><strong>Play Time:</strong>
-	If you play through without getting caught it only take a couple minutes. However, if you get caught you have to restart! If you aren't careful you will be restarting a lot..
-</li>
+	The game should take no more than a few minutes to reach the "end"(it isn't finished), even if you explore the whole thing.
+	</li>
 
 </ul>
 </div>

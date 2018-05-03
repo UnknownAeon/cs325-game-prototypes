@@ -35,12 +35,22 @@ GameStates.makePreloader = function( game ) {
 			game.load.audio('titleMusic', 'assets/audio/music/artemis.mp3');
 
 			// Game stuff
+			game.load.image('background' ,'assets/images/background.png');
 			game.load.tilemap('level', 'assets/level.json', null, Phaser.Tilemap.TILED_JSON);
 			game.load.image('tiles', 'assets/spritesheets/tiles.png');
+			game.load.spritesheet('tiles2', 'assets/spritesheets/tiles.png', 64, 64);
 			game.load.audio('mainMusic', 'assets/audio/music/greek_myths.mp3');
+			game.load.audio('gemGrab', 'assets/audio/sounds/gem.wav');
+			game.load.audio('damage', 'assets/audio/sounds/damage.wav');
+			game.load.audio('death', 'assets/audio/sounds/falling.wav');
+			game.load.audio('jump', 'assets/audio/sounds/splash.wav');
+			game.load.audio('splish', 'assets/audio/sounds/splish.wav');
 			game.load.image('water_frame', 'assets/images/water_frame.png');
 			game.load.image('water_bar', 'assets/images/water_bar.png');
-			game.load.spritesheet('player', 'assets/spritesheets/sprite_big.png', 30, 54);
+			game.load.spritesheet('player', 'assets/spritesheets/demigod.png', 64, 64);
+			game.load.spritesheet('bat', 'assets/spritesheets/bat.png', 42, 29);
+			game.load.spritesheet('waterblast', 'assets/spritesheets/waterblast.png', 16, 16);
+			game.load.spritesheet('items', 'assets/spritesheets/items.png', 16, 16);
     },
 
     create: function () {
